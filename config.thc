@@ -118,6 +118,9 @@ text es "point pillar" "pilare"
 text fr "point traverse" "vire"
 text fr "point ice-stalagmite" "stalagmite de glace"
 
+text fr "point u:anchor_artificial" "Ancrage artificiel"
+text fr "point u:anchor_natural" "Ancrage naturel"
+
 ### Layouts Languages
 
 # Different layouts to manage languages (en, fr, es)
@@ -919,6 +922,22 @@ code metapost
 		#thdraw (-.4u,.2u){dir -70}..{dir 70}(.4u,.2u) withcolor (0.53, 0.26, 0.11);
 		thdraw (-.2u,.1u){dir -70}..{dir 70}(.2u,.1u) withcolor (0.53, 0.26, 0.11);
 	enddef;
+	
+	# Point ancrage artificiel (From a post by Evaristo Quiroga)
+	def p_u_anchor_artificial(expr pos,theta,sc,al) =
+		T:=identity shifted pos;
+		thdraw origin withpen pencircle scaled 0.25u withcolor (0.58, 0.44, 0.25);
+	enddef;
+	initsymbol ("p_u_anchor_artificial");
+	# Point ancrage naturel (From a post by Evaristo Quiroga)
+	def p_u_anchor_natural(expr pos,theta,sc,al) =
+		U:=(.2u,.2u);
+		T:=identity aligned al rotated theta scaled sc shifted pos;
+		thfill (-.2u,-.2u)--(0,.2u)--(.2u,-.2u)--cycle withcolor (0.58, 0.44, 0.25); 
+	enddef;
+	initsymbol ("p_u_anchor_natural");
+
+	symbol-colour line rope [58 44 25]
 
 endcode
 

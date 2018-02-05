@@ -1,4 +1,4 @@
-Therion Config fila
+Therion Config file
 ===================================================
 
 Version 1.0 B1 - Janv 10, 2018
