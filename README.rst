@@ -1,7 +1,7 @@
 Therion Config file
 ===================================================
 
-Version 1.0 B1 - Janv 10, 2018
+Version 2.0 B1 - Oct 29, 2018
 
 Created by Xavier Robert
 
@@ -22,6 +22,7 @@ Usage
 3. and then, in each layout, you need to call the layout(s) of the config.thc you may interested in: 
 
 	ex: ``copy drawingconfig``
+
 
 Layouts of the config.thc
 -------------------------
@@ -45,5 +46,13 @@ In the config.thc, there are different parts and layouts :
 8. Layout layoutcontinuation: to write all the texts that go with continuations marks
 
 9. layout northarrowMG: New north arrow definition
+
+
+Templates for .thconfig and .th files
+-------------------------------------
+The folder ``Template_cave`` contains an example of a survey-folder structure and of some .th and .thconfig files with all the commands explained in french and english.
+You can use these files if you modify them according to your project.
+
+Have fun...
 
 

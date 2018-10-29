@@ -1,0 +1,36 @@
+encoding utf-8
+# Encoding of the file; Default = utf-8
+
+# Copyright (C) 2018 Xavier Robert <xavier.robert***@***ird.fr>
+# Released under a Creative Commons Attribution-ShareAlike-NonCommecial License:
+#	<http://creativecommons.org/licenses/by-nc-sa/3.0/>
+
+#<fr> Appeller les différents fichiers de données topographiques
+#<en> Call the different surveys files
+input th/matopo1.th
+input th/matopo2.th
+#<fr> Définir les points de jonction entre les différents fichiers topos
+#<en> Define stations where to join the different surveys files
+equate mastationtopo@matopo1 maonautrestationtopo@matopo2
+
+
+
+#<fr> Importer les différents dessins (par ex. pour le plan)
+#<en> Import the different drawings (e.g. for the plan view)
+input th2/mondessin1.th2
+input th2/mondessin2.th2
+
+#<fr> Joindre par ex. le scrap_p_1 (dans mondessin1.th2) avec le scrap scrap_p_21 (dans mondessin2.th2)
+#<en> Join e.g. the scrap_p_1 (in mondessin1.th2) with the scrap scrap_p_21 (in mondessin2.th2)
+join scrap_p_1 scrap_p_21
+#<fr> Si par exemple, les deux scraps se joignent en deux endroits distincts,
+#     utiliser l'option -count
+#<en> If for example the two scraps join themself at two different places,
+#     uses the -count option
+join scrap_p_1 scrap_p_21 -count 2
+
+
+#<fr> Definition des map (à rédiger)
+#<en> Map definition (to develop)
+
+

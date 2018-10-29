@@ -1,0 +1,105 @@
+encoding utf-8
+# Encoding of the file; Default = utf-8
+
+# Copyright (C) 2018 Xavier Robert <xavier.robert***@***ird.fr>
+# Released under a Creative Commons Attribution-ShareAlike-NonCommecial License:
+#	<http://creativecommons.org/licenses/by-nc-sa/3.0/>
+
+#<fr> Definition du bloc survey ;
+#     Le nom suivant la commande survey (ici matopo1) est fondamental
+#     parce qu'il sera utilisé pour nommer les stations dans le dessin
+#     et pour permettre les jonctions de données topos lorsqu'il y a plusieurs fichiers topos
+#<en> Survey definition;
+#     The name following the survey command (here matopo1) is crucial
+#     because it will be used to name topo stations on the drawing
+#     and to permit surveys junctions when several data files
+survey matopo1 -title "Mon trou" -entrance "0"
+
+#<fr> Début du bloc centerline (une session topo)
+#<en> Beginning of the bloc centerline (survey session)
+centerline -title "Mon titre"
+	#<fr> Définition du système de coordonnées utilisée pour l'entrée
+	#<en> Definition of the entrance coordinates system
+	cs lat-long
+	#<fr> Fixe les coordonnées de l'entrée (ici point 0) 
+	#     dans le système de coordonnées défini ci-dessus
+	#<en> Fix the coordinates of the entrance (here, the station 0)
+	#     In the coordinate system defined above
+	fix 0	-5.907276	-77.399751	1419
+	
+	#<fr> Date de la topographie ; utilisée pour calculer la déclinaison magnétique
+	#<en> Survey date; used to calcul the magnetic declination
+	date 2014.09.11
+		#<fr> Prénom et nom des topographes
+		#     Une ligne par nom
+		#     Pour les noms composés, séparer le prénom du nom avec un slash "/"
+		#<en> Vorname and name of the surveyors. 
+		#     One line for each person
+		#     For composite vornames, use the slash "/" to separate vorname and name
+		team "Prénom Nom"
+		team "Prénom Long/Nom"
+		
+	#<fr> Date de l'exploration
+	#<en> Exploration date
+	explo-date 2013.09.05
+		#<fr> Prénom et nom des explorateurs
+		#     Une ligne par nom
+		#     Pour les noms composés, séparer le prénom du nom avec un slash "/"
+		#<en> Vorname and name of the explorators. 
+		#     One line for each person
+		#     For composite vornames, use the slash "/" to separate vorname and name
+		explo-team "Prénom Nom"
+		explo-team "Prénom Long/Nom"
+	
+	#<fr> Définition des unités de longueur, direction (compass) et pente (clino)
+	#<en> Length, compass and slope units definition
+	units lenght meters
+	units compass degrees
+	units clino degrees
+
+	#<fr> Definition du type de données qu'on va entrer
+	#<en> Data definition   
+	data normal from to length compass clino left right up down
+		#<fr> Le tableau de données topo
+		#<en> Survey data table
+		0	0b			0.00	0.00	0.00	2.00	7.00	6.00	1.00
+		0b	1			14.00	20.00	-43.00	2.00	7.00	6.00	1.00
+		# .
+		# .
+		# .
+
+		#<fr> Pour étendre la ligne de cheminement vers la gauche (left) ou vers la droite (right, défaut)
+		#     (pour les coupes développées)
+		#<en> To extend the line survey to the left or to the right (default)
+		#     (for extended views)
+		extend left
+		dudu	bloup			20.00	3.00	38.00	2.00	7.00	6.00	1.00
+		# .
+		# .
+		# .
+		extend right
+		# .
+		# .
+		# .
+
+		#<fr> Déclare que les visées suivantes sont des visées dupliquées 
+		#     (ou de surface si on remplace "duplicate" par "surface")
+		#<en> States that the following shots sont duplicates
+		#     (or surface shots if "duplicate" is replaced by "surface")
+		flags duplicate
+		# .
+		# .
+		# .
+		#<fr> Les stations qui suivent ne sont plus dupliquées
+		#<en> The following shots are not duplicated anymore !
+		flags not duplicate
+
+endcenterline
+#<fr> Fin du bloc centerline.
+#     On peut ajouter autant de blocs centerline que nous voulons
+#<en> End of the centerline bloc
+#     We can add as many bloc centerline we want
+
+endsurvey
+#<fr> Fin du bloc survey
+#<en> End of the survey section

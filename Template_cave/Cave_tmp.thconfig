@@ -1,0 +1,478 @@
+encoding  utf-8
+# Encoding of the file; Default = utf-8
+ 
+# Copyright (C) 2018 Xavier Robert <xavier.robert***@***ird.fr>
+# Released under a Creative Commons Attribution-ShareAlike-NonCommecial License:
+#	<http://creativecommons.org/licenses/by-nc-sa/3.0/>
+
+# This file is a template thconfig file
+# To get more info about the different options, please, refer to the ThBook.pdf
+
+# all the lines beginning with a "#" character are commented 
+# and are not processed during the compilation
+
+# If you use this file, you may need to change some lines according to your project.
+# A minima: 
+#	- all the source lines
+#	- all the title/authors/clubs/... definition (MetaPost section)
+#	- All the export-names at the end !
+
+#_________________________________________________________________________________________#      
+# 1-SOURCES 
+# <fr> La ligne source specifie le fichier ou sont les données topo
+#      (Au fichier "nomcavite.th" il faudra avoir une ligne
+#      "input "nomcavite.th2" pour specifier le fichier où se trouvent
+#      les donnees du dessin, comme ça, ce fichier thconfig appelera 
+#      nomcavite.th" et a son tour, "nomcavite.th" appelera "nomcavite.th2")
+#      Soit on appelle le fichier de données topo .th + le fichier de dessin associé .th2 (2 lignes d'appel)
+#      Soit un fichier global.th (exemple actuel) qui appellera lui tous les fichiers .th et .th2
+#<en> This line is to call the file that calls the survey (.th) and drawing (.th2) files.
+#     You also can call all the files here with the source command, 
+#     but you will not be able to link everything there
+source cave_tmp_tot.th
+
+#<fr> Si vous avez un MNT, vous pouvez le rajouter
+#<en> If you have a DEM, you can add it
+source DEM/DEM.th
+
+#<fr> Utiliser un fichier de configuration (chemin + nom). 
+#     Ce fichier doit contenir des définitions (layout) qui seront appelées dans les layouts de ce thconfig
+#<en> Add config file (path + name).
+#     Should contain layouts definitions that will be called in the layout of this thconfig
+input ../../../config.thc 
+#_________________________________________________________________________________________#
+
+
+
+#_________________________________________________________________________________________#  
+# 2-LAYOUT   
+#<fr> Debut de la definition du Layout "xviexport".
+#     Ce layout permet de définir les caractéristiques d'un export de fichiers xvi ;
+#     Il est donc très simple
+#<en> Beginning of the Layout "xviexport".
+#     This layout is to define the xvi-files export
+layout xviexport
+	#<fr> Echelle a laquelle on veut dessiner la topo
+	#<en> Scale a which we will draw the maps
+	scale 1 1000
+	#<fr> Taille de la grille (ne pas oublier l'unité)
+	#<en> Size of the grid (do not forget the unit)
+	grid-size 10 10 10 m
+	#<fr> Mettre la grille en arrière plan
+	#<en> Add the grid backwards
+	grid bottom
+endlayout
+#<fr> fin de la définition du layout "xviexport" 
+#>en> End of the layout "xviexport"
+
+#<fr> Début de la définition du Layout pour la projection en plan
+#<en> Beginning of the definition for the plan view
+layout my_layout
+
+	#<fr> Appel des layouts à utiliser qui sont définis dans le fichier de configuration config.thc
+	#     Editer le fichier config.thc pour connaître les différentes configurations possibles
+	#     et pour les modifier ou en rajouter si besoin
+	#<en> Call the config settings (Layouts config inside the config.thc file)
+	#     Edit the config.thc file to know the existing configurations
+	#     and to modify then or add new ones
+	copy drawingconfig
+	copy headerl 
+	copy langue-es
+	#copy northarrowMG 
+
+	#<fr> Titre du document pdf 
+	#<en> Title of the pdf file
+	doc-title "Mon Trou !"
+	
+	#<fr> Auteur du document pdf 
+	#<en> Author of the pdf file
+	doc-author "Xavier Robert"
+	
+	#<fr> pdf avec gestion des calques ou non
+	#<en> pdf with layers or not
+	layers on
+  
+	#<fr> Définir le système de projection pour la projection en plan
+	#     Pour faire la topo dans le system UTM remplacer xx par la zone UTM (e.g. UTM32)
+	#<en> Define the projected coordinate system to built the plan projection
+	#     To use UTM coordinates, changes the xx by the UTM zone (e.g. UTM32)
+	cs UTMxx
+  
+	#<fr> "base-scale" specifie l'échelle à laquelle nous avons
+	#     dessiné nos croquis (devrait correspondre à l'option scale du layout xvi export).
+	#     Par defaut, c'est 1/200.
+	#<en> 
+	base-scale 1 1350
+     
+	#<fr> Spécification de l'échelle, pour imprimer la topo. 
+	#     La combinaison/ratio entre scale et base-scale
+	#     controlle le gros des lignes, rotation, etc, convenable
+	#     pour faire l'amplification-reduction entre dessin et
+	#     le résultat de l'imprimante
+	#     C'est tres important s'assurer que la configuration de
+	#     l'imprimante ne specifie pas l'option "Fit in page"
+	#     ou similaire, sinon, l'échelle sera changée pendant
+	#     l'impression
+	#<en> Specify the scale of the printed map.
+	#     The ratio scale/base-scale controls the size of the text/lines/symbols
+	scale 1 1000
+
+	#<fr> Echelle graphique 100 m ampleur ; la valeur scale/10 est généralement un bon choix
+	#<en> 100 m Scale bar ; the choice scale/10 is generally a good choice
+	scale-bar 100 m
+  
+	#<fr> Pour faire une rotation (en degrés)
+	#>en> To rotate the map (in degrees)
+	#rotate 2.25
+    
+	#<fr> Pour imposer un fond gris de fond, 85% blanc = 15% noir
+	#<en> To define a grey background
+	#color map-bg 85
+  
+	#<fr> Pour définir une couleur de topo (triplet RVB de 0 à 100)
+	#<en> To define the color of the map (RVB triplet from 0 to 100)
+	color map-fg [100 100 80]
+  
+	#<fr> Choisir si la topo est transparente (on peut voir les galeries sous-jacentes) ou non
+	#     On par defaut, donc, pas vraiment besoin de specifier
+	#<en> Chose si the map is transparent (we thus can see passages above) or not
+	#     On by default
+	transparency on
+  
+	#<fr> Pourcentage de transparence, marche seulement si transparency est "on"
+	#<en> Transparency % (only if transparency is set to on)
+	opacity 75
+    
+	#<fr> Ajouter un commentaire au titule, sous le titre, optionel
+	#<en> Add a comment to the header, under the title (optional)
+	map-comment "Mon commentaire"
+  
+	#<fr> Afficher les statistiques d'explo par équipe/nom. C'est lourd
+	#     si la cavité est importante et qu'il y a beaucoup d explorateurs
+	#     Utilise les infos de la commande explo-team et explo-date de la centerline
+	#<en> Print the explo stats by team/name. This is too much if the caveis important...
+	#     Uses info from the explo-team and explo-date from the centerline block
+	statistics explo-length off
+  
+	#<fr> Affiche les statistiques de topographie par équipe/noms
+	#     Comme pour la ligne précédente, ça peut être lourd.
+	#     Utilise les infos de la commande team et date de la centerline
+	#<en> Print the topo-stats
+	#     Uses info from the team and date from the centerline block
+	statistics topo-length off
+  
+	#<fr> Afficher un copyright (utilise la commande copyright des scraps et centerlines)
+	#<eb> Print a copyright (uses the copyright command from scraps and centerlines)
+	statistics copyright all
+  
+	#<fr> Si nous voulons une légende pour expliquer les symboles. "on" imprimera
+	#     seulement la legende des symboles dessines sur la topo, si l on veut
+	#     pour tous les symboles, utilises ou pas, il faut indiquer "all".
+	#     "legend off" = pas de legende
+	#<en> To print the legend to describe the symbols. 
+	#     If "on", print only the symbols used on the map
+	#     If "all", print all the available symboles
+	#     If "no", no legend
+	legend off
+  
+	#<fr> Largeur de la légende. Par defaut, la legende est de 14 cm de largeur
+	#<en> Widtth of the legend. By default, 14 cm
+	legend-width 18 cm
+	
+	#<fr> Nombre de colonnes de la légende ; par défaut, 2 colonnes
+	#<en> Number of columns of the legend; by default, 2 columns
+	legend-columns 3
+  
+	#<fr> Spécifie la position de la manchette : interieur
+	#     occuppé par le titule, auteurs, etc. Nous pouvons indiquer
+	#     les coordonnées du point de la topo ou l'on veut la manchette :
+	#        0 0, c est en bas, a gauche
+	#        100 100, c est en haut, a droite
+	#     La manchette a des "points cardinaux" : n, s, ne, sw, etc.
+	#     Il faut spécifier un de ces points 
+	#<en> Specify the position of the header (title, authors, stats,...)
+	#     Coordinates of the point where we want the header:
+	#        0,0 is bottom - left
+	#        100, 100 is top - right
+	#     We also need to specify the point to which it refers : n, s, ne, sw...
+	map-header 4 90 nw
+  
+	#<fr> Arrière plan de la manchette; pour savoir si on voit où pas ce qu'il y a derrière
+	#<en> Background of the header or not.
+	map-header-bg off
+  
+	#<fr> Options pour afficher le squelette topo, ou non
+	#<en> Print or not the line survey
+	symbol-hide line survey
+	
+	#<fr> Affiche les points et le nom des stations topos (station-names), des scraps (sraps-name)...
+	#<fr> Print stations/names of the topographic stations (station-names), scraps (sraps-name)...
+	#debug station-names
+  
+	#<fr> Specifier qu'il faut imprimer une grille au dessous de la topo  
+	#<en> Print a grid under the map
+	#grid bottom
+  
+	#<fr> Specifier le pas de la grille, ici 100x100x100 m
+	#     (Trois dimensions, oui, ça sert pour la coupe aussi) 
+	#<en> Specify the grid dimensions (here 100x100x100 m)
+	#grid-size 100 100 100 m
+	
+	#<fr> Si nous ne voulons pas de grille
+	#<en> If we do not want any grid
+	grid off
+  
+
+	######## Code MetaPost pour modifier l aspect des symboles ####### 
+	############ MetaPost code to modify symbols aspects ############# 
+  
+	# Titre          
+	code tex-map
+		% Output map title as determined by Therion 5.3 is stored in cavename. 
+		% It will be empty if there are multiple maps selected for any one projection
+		% AND there are multiple source surveys identified in the thconfig file 
+		% ie Therion can not infer a unique title from the input data given.
+		% This code allows you to define an output map title {cavename} if it happens to be empty
+  
+		\edef\temp{\the\cavename}   % cavename from Therion
+		\edef\nostring{}            % empty string
+		\ifx\temp\nostring          % test if cavename is empty
+			% if empty reassign cavename to describe selected maps as a group
+			\cavename={Tragadero de Bellavista} 		
+		\else % if not empty keep the value set by therion, or assign an override cavename here
+		\fi
+	\newtoks\club \club={Mon club}
+	\newtoks\synth \synth={Xavier Robert}
+	\newtoks\wpage \wpage={http://mapageweb}
+	\newtoks\expe \expe={Mon expe 2018}
+	endcode    
+
+endlayout
+#<fr> Fin de la définition du layout pour l'export de la projection en plan
+#<en> End of the plan-view layout definition
+ 
+ 
+#<fr> Début de la définition du Layout pour la projection en coupe (ici développée)
+#<en> Beginning of the definition for the extended elevation view 
+layout my_layout-coupe
+  
+  	#<fr> Appel des layouts à utiliser qui sont définis dans le fichier de configuration config.thc
+	#     Editer le fichier config.thc pour connaître les différentes configurations possibles
+	#     et pour les modifier ou en rajouter si besoin
+	#<en> Call the config settings (Layouts config inside the config.thc file)
+	#     Edit the config.thc file to know the existing configurations
+	#     and to modify then or add new ones
+	copy drawingconfig
+	copy header_coupe
+	copy langue-es
+	
+	#<fr> Titre du document pdf 
+	#<en> Title of the pdf file 
+	doc-title "Tragadero de Bellavista"
+	
+	#<fr> Auteur du document pdf 
+	#<en> Author of the pdf file
+	doc-author "Xavier Robert"
+	
+	#<fr> pdf avec gestion des calques ou non
+	#<en> pdf with layers or not
+	layers on
+  
+	#<fr> "base-scale" specifie l'échelle à laquelle nous avons
+	#     dessiné nos croquis (devrait correspondre à l'option scale du layout xvi export).
+	#     Par defaut, c'est 1/200.
+	#<en> Specify the scale of the scrap we used to draw the map.
+	#     By default, this is 1/200
+	base-scale 1 1750
+  
+	#<fr> Spécification de l'échelle, pour imprimer la topo. 
+	#     La combinaison/ratio entre scale et base-scale
+	#     controlle le gros des lignes, rotation, etc, convenable
+	#     pour faire l'amplification-reduction entre dessin et
+	#     le résultat de l'imprimante
+	#     C'est tres important s'assurer que la configuration de
+	#     l'imprimante ne specifie pas l'option "Fit in page"
+	#     ou similaire, sinon, l'échelle sera changée pendant
+	#     l'impression
+	#<en> Specify the scale of the printed map.
+	#     The ratio scale/base-scale controls the size of the text/lines/symbols
+	scale 1 1500
+
+
+	#<fr> Echelle graphique 100 m ampleur ; la valeur scale/10 est généralement un bon choix
+	#<en> 100 m Scale bar ; the choice scale/10 is generally a good choice
+	scale-bar 150 m  
+
+	#<fr> Pour faire une rotation (en degrés)
+	#>en> To rotate the map (in degrees)
+	#rotate 2.25
+    
+	#<fr> Pour imposer un fond gris de fond, 85% blanc = 15% noir
+	#<en> To define a grey background
+	#color map-bg 85
+  
+	#<fr> Pour définir une couleur de topo (triplet RVB de 0 à 100)
+	#<en> To define the color of the map (RVB triplet from 0 to 100)
+	color map-fg [100 100 80]
+  
+	#<fr> Choisir si la topo est transparente (on peut voir les galeries sous-jacentes) ou non
+	#     On par defaut, donc, pas vraiment besoin de specifier
+	#<en> Chose si the map is transparent (we thus can see passages above) or not
+	#     On by default
+	transparency on
+  
+	#<fr> Pourcentage de transparence, marche seulement si transparency est "on"
+	#<en> Transparency % (only if transparency is set to on)
+	opacity 75
+  
+	#<fr> Ajouter un commentaire au titule, sous le titre, optionel
+	#<en> Add a comment to the header, under the title (optional)
+	map-comment "<it>Alzado<ss> - Nueva Cajamarca, Rioja, San Martín, Perú"
+  
+	#<fr> Afficher les statistiques d'explo par équipe/nom. C'est lourd
+	#     si la cavité est importante et qu'il y a beaucoup d explorateurs
+	#     Utilise les infos de la commande explo-team et explo-date de la centerline
+	#<en> Print the explo stats by team/name. This is too much if the caveis important...
+	#     Uses info from the explo-team and explo-date from the centerline block
+	statistics explo-length off
+	
+	#<fr> Affiche les statistiques de topographie par équipe/noms
+	#     Comme pour la ligne précédente, ça peut être lourd.
+	#     Utilise les infos de la commande team et date de la centerline
+	#<en> Print the topo-stats
+	#     Uses info from the team and date from the centerline block
+	statistics topo-length off
+  
+	#<fr> Afficher un copyright (utilise la commande copyright des scraps et centerlines)
+	#<eb> Print a copyright (uses the copyright command from scraps and centerlines)
+	statistics copyright all
+  
+	#<fr> Si nous voulons une légende pour expliquer les symboles. "on" imprimera
+	#     seulement la legende des symboles dessines sur la topo, si l on veut
+	#     pour tous les symboles, utilises ou pas, il faut indiquer "all".
+	#     "legend off" = pas de legende
+	#<en> To print the legend to describe the symbols. 
+	#     If "on", print only the symbols used on the map
+	#     If "all", print all the available symboles
+	#     If "no", no legend
+	legend off
+  
+	#<fr> Largeur de la légende. Par defaut, la legende est de 14 cm de largeur
+	#<en> Widtth of the legend. By default, 14 cm
+	legend-width 20 cm
+	
+	#<fr> Nombre de colonnes de la légende ; par défaut, 2 colonnes
+	#<en> Number of columns of the legend; by default, 2 columns
+	legend-columns 3
+  
+	#<fr> Spécifie la position de la manchette : interieur
+	#     occuppé par le titule, auteurs, etc. Nous pouvons indiquer
+	#     les coordonnées du point de la topo ou l'on veut la manchette :
+	#        0 0, c est en bas, a gauche
+	#        100 100, c est en haut, a droite
+	#     La manchette a des "points cardinaux" : n, s, ne, sw, etc.
+	#     Il faut spécifier un de ces points 
+	#<en> Specify the position of the header (title, authors, stats,...)
+	#     Coordinates of the point where we want the header:
+	#        0,0 is bottom - left
+	#        100, 100 is top - right
+	#     We also need to specify the point to which it refers : n, s, ne, sw...
+	map-header 2 25 sw
+    
+	#<fr> Arrière plan de la manchette; pour savoir si on voit où pas ce qu'il y a derrière
+	#<en> Background of the header or not.
+	map-header-bg off
+   
+	#<fr> Options pour afficher le squelette topo, ou non
+	#<en> Print or not the line survey
+	symbol-hide line survey
+	
+	#<fr> Affiche les points et le nom des stations topos (station-names), des scraps (sraps-name)...
+	#<fr> Print stations/names of the topographic stations (station-names), scraps (sraps-name)...
+	#debug station-names
+  
+	#<fr> Specifier qu'il faut imprimer une grille au dessous de la topo  
+	#<en> Print a grid under the map 
+	#grid bottom
+  
+	#<fr> Specifier le pas de la grille, ici 100x100x100 m
+	#     (Trois dimensions, oui, ça sert pour la coupe aussi) 
+	#<en> Specify the grid dimensions (here 100x100x100 m) 
+	#grid-size 100 100 100 m
+	
+	#<fr> Si nous ne voulons pas de grille
+	#<en> If we do not want any grid
+	grid off
+
+
+	######## Code Metapost pour modifier l aspect des symboles #######
+	############ MetaPost code to modify symbols aspects ############# 
+ 
+	# Titre          
+	code tex-map
+		% Output map title as determined by Therion 5.3 is stored in cavename. 
+		% It will be empty if there are multiple maps selected for any one projection
+		% AND there are multiple source surveys identified in the thconfig file 
+		% ie Therion can not infer a unique title from the input data given.
+		% This code allows you to define an output map title {cavename} if it happens to be empty
+  
+		\edef\temp{\the\cavename}   % cavename from Therion
+		\edef\nostring{}            % empty string
+		\ifx\temp\nostring          % test if cavename is empty
+			% if empty reassign cavename to describe selected maps as a group
+			\cavename={Tragadero de Bellavista} 		
+		\else % if not empty keep the value set by therion, or assign an override cavename here
+		\fi
+	\newtoks\club \club={Mon Club}
+	\newtoks\synth \synth={Xavier Robert}
+	\newtoks\wpage \wpage={http://mapageweb}
+	\newtoks\expe \expe={Mon expe 2018}
+	endcode  
+  
+endlayout
+#<fr> Fin de la définition du layout pour l'export de la projection en coupe développée
+#<en> End of the extended-view layout definition
+#_________________________________________________________________________________________#
+
+ 
+ 
+#_________________________________________________________________________________________#  
+# 3-EXPORTS
+ 
+#<fr> Cette dernière partie défini les différents exports à effectuer
+#<en> Defines the different exports to do
+ 
+#<fr> Export des fichiers xvi ; 
+#     Il est mieux que ces fichiers xvi soit enregistrés dans le dossier de dessin (ici th2/)
+#<en> xvi export
+#     Better if the xvi files are saved in the drawing folder (here th2/)
+export map -fmt xvi -layout xviexport -o th2/cave2018.xvi
+export map -projection extended -fmt xvi -layout xviexport -o th2/cave-coupe2018.xvi
+
+#<fr> Export du plan en pdf
+#<en> Pdf plan-view export
+export map -o Outputs/2D/cave-plan2018.pdf -layout my_layout
+#<fr> Export de la coupe développée en pdf
+#<en> Pdf extended-view export
+export map -projection extended -layout my_layout-coupe -o cave-coupe2018.pdf
+
+#<fr> Export du modèle en 3D (.lox pour visualistion dans Loch)
+#<en> Lox 3D-model export (.lox for visualisation with Loch)
+export model -o cave_2018.lox
+#<fr> Export du modèle en 3D en .dxf
+#<en> Dxf 3D-model export
+export model -o cave_2018.dxf
+ 
+#<fr> Export des fichiers ESRI (shapefiles 2D et 3D)
+#<en> 2D and 3D Shapefiles (ESRI) export
+export map -proj plan -fmt esri -o cave_2018 -layout my_layout	# 2D
+export model -fmt esri -o cave_2018								# 3D
+  
+#<fr> Export du squelette topo en kml pour Google Earth
+#<en> Kml export of the centerline (for Google Earth)
+export model -fmt kml -o cave_2018m.kml
+#<fr> Export de la topographie (parois) en kml pour Google Earth
+#<en> Kml export of the walls-map (for Google Earth)
+export map -proj plan -fmt kml -o cave_2018.kml -layout my_layout
+
+
