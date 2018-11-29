@@ -3,15 +3,18 @@ Therion Config file
 
 Version 2.0 B1 - Oct 29, 2018
 
-Created by Xavier Robert
+Created by: / Créé par : Xavier Robert
 
 Licence
 -------  
 Released under a Creative Commons Attribution-ShareAlike-NonCommecial License:
 	<http://creativecommons.org/licenses/by-nc-sa/3.0/>
 
-Usage
------
+Publié sous la licence Creative Commons Attribution-ShareAlike-NonCommecial:
+	<http://creativecommons.org/licenses/by-nc-sa/3.0/>
+
+Usage (en)
+----------
 
 1. Copy the file in the master/parent folder of your caves' surveys database
 
@@ -24,14 +27,14 @@ Usage
 	ex: ``copy drawingconfig``
 
 
-Layouts of the config.thc
--------------------------
+Layouts of the config.thc (en)
+------------------------------
 
-In the config.thc, there are different parts and layouts :
+In the config.thc, there are different parts and layouts:
 
 1. a first part where the legend names can be changed, according to the language called by the Therion keyword ``language XX``
 
-2. layout langue-XX with XX = fr, es or en: Layout to change the language in the header and the legend. it also define the Therion keyword ``language XX``
+2. layout langue-XX with XX = fr, es or en: Layout to change the language in the header and the legend. It also define the Therion keyword ``language XX``
 
 3. Layout drawconfig: layout that set colors/size of symbols, define new symbols...
 
@@ -47,12 +50,142 @@ In the config.thc, there are different parts and layouts :
 
 9. layout northarrowMG: New north arrow definition
 
+10. layout test: to test new configurations if needed!
 
-Templates for .thconfig and .th files
--------------------------------------
-The folder ``Template_cave`` contains an example of a survey-folder structure and of some .th and .thconfig files with all the commands explained in french and english.
+New symbols definitions (en)
+----------------------------
+Today the layout drawconfig defines new points/lines/areas symbols. To use them, use for each type of symbol (point, line or area) the u definition: u:_NEW_SYMBOL_NAME.
+New points are:
+
+1. nest (u:nest)
+
+2. gradient -->	geologic dip
+
+3. danger (u:danger)
+
+4. bats (u:bats)
+
+5. stalactite boss (u:boss)
+
+6. artificial anchor (u:anchor_artificial)
+
+7. natural anchor (u:anchor_natural)
+
+New lines are:
+
+1. strata (u:strata; option -clip off)
+
+2. coupole (u:coupole; option -clip off)
+
+3. fault (u:fault; option -clip off)
+
+4. doline (u:doline; option -clip off)
+
+5. bats (u:bats)
+
+6. surface (u:surf; option -clip off)
+
+New areas are:
+
+1. mud (u:boue)
+
+2. guano (u:guano)
+
+3. bats (u:bats)
+
+Templates for .thconfig and .th files (en)
+------------------------------------------
+The folder ``Template_cave`` contains an example of a survey-folder structure and of some .th and .thconfig files with all the commands explained in french (<fr>) and english (<en>).
 You can use these files if you modify them according to your project.
 
 Have fun...
+
+
+Utilisation (fr)
+----------
+
+1. Copier le fichier dans le dossier master/parent folder de votre cavité ou de votre base de données topographiques
+
+2. Dans votre fichier *.thconfig, vous devez appeller ce fichier avec la ligne : 
+
+	``input <path/to/the/file/>config.thc``
+
+3. Et ensuite, dans chaque layout de votre *.thconfig, vous devez appeller le layout(s) du fichier de configuration config.thc qui vous intéresse en rajoutant la ligne : 
+
+	ex: ``copy drawingconfig``
+
+
+Layouts disponibles dans le config.thc (fr)
+-------------------------------------------
+
+Dans le config.thc, il y a différentes parties et layouts :
+
+1. Une première partie où les descriptions de la légende peuvent être modifiées, en fonction de la langue définie par le mot-clef Therion ``language XX``
+
+2. layout langue-XX avec XX = fr, es où en : Layout pour changer la langue du cartouche (header) et de la légende. Cela définit aussi le mot-clef Therion ``language XX``
+
+3. Layout drawconfig : layout qui permet de définir la couleur, la taille de symboles, ainsi que de nouveaux symboles...
+
+4. layout headerl : Redéfinit le cartouche (header) pour la projection en plan
+
+5. layout header_coupe :  Redéefinit le cartouche (header) pour la coupe développée
+
+6. layout layoutmapborder : pour ajouter un cadre de bordure aux exports pdf
+
+7. layout layouAtlasNorthArrow : redéfinition de la flèche du nord pour l'Atlas
+
+8. Layout layoutcontinuation : pour écrire tous les textes qui sont donnés dans les points de continuations (i.e. avec l'option -attr Code XX -text "C'est ce texte là qui est écrit"
+
+9. layout northarrowMG : Nouvelle définition de la flèche du nord
+
+10. layout test : pour tester de nouvelles configurations si besoin !
+
+Nouvelles définitions de symboles (fr)
+--------------------------------------
+Actuellement, le layout drawconfig définit de nouveaux symboles de points, de lignes et d'aires, qui peuvent être appelés en utilisant pour chaque entité (point, ligne ou aire) la définition u:NOM.
+Les nouveaux points sont :
+
+1. nid (u:nest)
+
+2. gradient -->	pendage géologique
+
+3. danger (u:danger)
+
+4. chauves-souris (u:bats)
+
+5. stalactite boss (u:boss)
+
+6. ancrage artificiel (u:anchor_artificial)
+
+7. ancrage naturel (u:anchor_natural)
+
+Les nouvelles lignes sont :
+
+1. strate (u:strata ; option -clip off)
+
+2. coupole (u:coupole ; option -clip off)
+
+3. faille (u:fault ; option -clip off)
+
+4. doline (u:doline ; option -clip off)
+
+5. chauves-souris (u:bats)
+
+6. surface (u:surf ; option -clip off)
+
+Les nouvelles aires sont :
+
+1. boue (u:boue)
+
+2. guano (u:guano)
+
+3. chauves-souris (u:bats)
+
+Templates pour fichiers .thconfig et .th (fr)
+---------------------------------------------
+Le dossier ``Template_cave`` contient un exemple de la structure d'un dossier d'une topographie et de quelques fichiers .th et .thconfig avec les commandes principales expliquées/décrites en français (<fr>) et en anglais (<en>).
+Vous pouvez utiliser ces fichiers en les adaptant à votre project.
+
+Bon courage...
 
 

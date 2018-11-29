@@ -1,0 +1,15 @@
+TO DO
+	- Rajouter un point arbre:pin ; add a point tree:pinus
+	- Rajouter un point arbre:feuillu ; add a point tree:???
+	- ajouter un point oiseau/guacharos ; add a point bird/guacharos
+	- ajouter ligne tronc ; add a point tree_trunc
+	- ajouter point stalactites/mites brisées ; add a point broken stalactites/mites
+	
+	- Add a layout for the a great atlas definition !
+	
+	- Debug the depth point definition !
+	- 
+
+DONE
+	- 
+	

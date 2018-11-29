@@ -1,0 +1,7 @@
+History
+
+2018/11/28 : READMEs translation
+			 TODO.txt file added
+			 History.txt file added
+
+2018/10 : French/english templates
