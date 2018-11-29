@@ -33,8 +33,32 @@ Three folders are also present:
 For all the template files, the functions are described both in French (<fr>) and English (<en>).
 
 
-Templates pour fichiers .thconfig et .th files (fr)
----------------------------------------------------
+Quick Therion cookbook/workflow (en)
+------------------------------------
+
+1. Build .th and .thconfig files
+
+2. Generate an .xvi file
+
+3. Open a new .th2 (drawing) file
+
+4. Import the .xvi file
+
+5. Add a new srap
+
+6. Add station points
+
+7. Draw the walls
+
+8. Draw the inner features
+
+9. Add the texte around the cave
+
+10. Repeat the point 5 to 9 with a new scrap
+
+
+Templates pour fichiers .thconfig et .th (fr)
+---------------------------------------------
 Dans ce dossier, deux fichiers sont présents :
 
 1. Cave_tmp.thconfig : C'est un fichier thconfig template pour (noter la première lettre du nom en majuscule ; cela aide grandement si utilisation de la complétion automatique avec l'utilisation du terminal...)
@@ -50,3 +74,27 @@ Il y a aussi trois autres dossiers :
 3. th2/ : dossier où sont les fichiers de dessins (.th2 et .xvi)
 
 Pour chaque fichier template, les fonctions et les mots-clefs sont décrits à la fois en français (<fr>) et en anglais (<en>).
+
+
+Recette rapide/workflow pour Therion (fr)
+-----------------------------------------
+
+1. Construire les fichiers .th et .thconfig
+
+2. Générer un fichier .xvi
+
+3. Ouvrir un nouveau fichier de dessin .th2
+
+4. Importer le fichier .xvi
+
+5. Ajouter un nouveau srap
+
+6. Ajouter les points de stations topographiques
+
+7. Dessiner les murs/parois
+
+8. Dessiner les objets internes à la grotte (points, lignes puis aires)
+
+9. Ajouter du texte autour du dessin
+
+10. Recommencer du point 5 à 9 avec un nouveau scrap.
