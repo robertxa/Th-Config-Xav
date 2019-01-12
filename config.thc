@@ -28,6 +28,7 @@ encoding  utf-8
 #	- danger (u:danger)
 #	- chauves-souris/bats (u:bats)
 #	- stalactite boss (u:boss)
+#	- Shell/coquille fossile (u:shell)
 
 # Existing user lines:
 #	- strate/strata (u:strata; option -clip off)
@@ -40,6 +41,8 @@ encoding  utf-8
 # 	- boue/mud (u:boue)
 #	- guano (u:guano)
 #	- chauves-souris/bats (u:bats)
+#	- tronc/tree-trunk (u:tronc)
+#	- feuilles/tree-leaves (u:feuilles)
 
 
 #<en> change the names for the legend
@@ -83,10 +86,21 @@ text fr "area u:boue" "lac de boue"
 text en "area u:boue" "mud lake"
 text es "area u:boue" "lago de barro"
 
+text fr "area u:tronc" "tronc d'arbre"
+text en "area u:tronc" "Tree trunk"
+text es "area u:tronc" "tronca de árbol"
+
+text fr "area u:feuilles" "feuilles/feuillage"
+text en "area u:feuilles" "tree leaves"
+text es "area u:feuilles" "Hojas de árbol"
+
 text en "line u:sentier" "trail"
 text fr "line u:sentier" "sentier"
 text es "line u:sentier" "sendero"
 
+text en "line u:shell" "shell"
+text fr "line u:shell" "fossil"
+text es "line u:shell" "fosíl"
 
 # Correction texte espagnol
 text es "point air-draught" "corriente de aire"
@@ -501,6 +515,24 @@ layout drawingconfig
 			T:=identity;
 			thfill p withcolor (0.53, 0.26, 0.11);
 		enddef;
+		
+		#<en> To change color of a tree-trunk
+		#     I advise to use a line "border" to delimit the area
+		#	  If used with tree-leaves, add the option -place top
+		#<fr> Pour modifier la couleur de l'aire tronc
+		#	  Je suggère d'utiliser une ligne "border/bord" pour délimiter l'aire
+		#	  Si utilisé conjointement avec l'aire feuilles d'arbres, utiliser l'option -place top
+		def a_u_tronc (expr p) =
+			T:=identity;
+			thfill p withcolor (0.62, 0.24, 0.05);
+		enddef;
+
+		#<en> To change color of a tree-leaves
+		#<fr> Pour modifier la couleur de l'aire feuilles d'arbre/feuillage
+		def a_u_feuilles (expr p) =
+			T:=identity;
+			thfill p withcolor (0.0, 1.0, 0.0);
+		enddef;
 
 		#<en> To change color of Water area
 		#<fr> Pour modifier la couleur de l'aire eau
@@ -515,6 +547,7 @@ layout drawingconfig
 		def s_northarrow (expr rot) =
 			begingroup
 				interim defaultscale:=0.7; % scale your north arrow here
+				#interim defaultscale:=0.5; % scale your north arrow here; 0.5 is the best value for atlas
 				T:=identity scaled defaultscale rotated -rot;
 				interim linecap:=squared;
 				interim linejoin:=rounded;
@@ -940,6 +973,24 @@ layout drawingconfig
 			%thdraw p withcolor;
 		enddef;
 
+		#<en> Definition of a shell limestone symbol
+		#<fr> Définition du point coquille fossile
+		def p_u_shell (expr pos,theta,sc,al)=
+			T:=identity shifted pos;
+			pickup PenB;
+			numeric turns, radius;
+			path ss, cesta;
+			pair za, zb;
+			turns = 1.55;
+			radius = .3u;
+			za = ( xpart(origin)+0, ypart(origin)+.1u ) rotated 370 turns;
+			zb = ( xpart(origin)+.3u, ypart(origin)+0 ) rotated 360 turns;
+			cesta := za--zb;
+			ss := (origin for t=1 upto 360 turns: -- dir t scaled t endfor) scaled (radius/turns/360);
+			thdraw ss withcolor (0.3);
+			thdraw (cesta cutbefore ss) withcolor (0.3);
+		enddef;
+		
 		#<en> Define Danger symbol
 		#<fr> Définition du point Danger
 		def p_u_danger (expr P,R,S,A)=
@@ -1263,6 +1314,126 @@ endlayout
 
 
 #------------------------------
+layout headeratlas
+#<en> Layout to change the header (plan projection)
+#     This code is experimental redefinition of map header and based on the work of
+#     Bruce Mutton           Therion 5.3.15 make use of new variables
+#<fr> Layout pour modifier le cartouche (header) de la projection en plan
+#     Ce code de redéfinition est expérimental experimental et basé sur le travail de
+#     Bruce Mutton           Therion 5.3.15 fait appel à de nouvelles variables
+
+
+	#<en> This one affects maps only
+	#<fr> Ceci ne touche que les maps (plans)
+	code tex-map
+		\legendcontent={%
+			\hsize=\legendwidth
+			\color[0 0 0]\the\legendtextcolor
+			\ifnortharrow\vbox to 0pt{\line{\hfil\northarrow}\vss}\fi
+			%print cave map name
+			\edef\tmp{\the\cavename} \ifx\tmp\empty \else
+				{\the\legendtextheadersize\the\cavename}\vskip0.5cm
+			\fi
+			%print comment
+			{\rightskip=0pt plus 3em\parskip=3bp
+			\edef\tmp{\the\comment} \ifx\tmp\empty \else
+				{\the\legendtextsize\the\comment} \par\medskip\vskip1cm
+			\fi}
+			%print scalebar
+			\ifscalebar\scalebar\vskip1cm\fi
+
+		% start bruces addition
+		# %    CS
+		\edef\tmp{\the\outcsname} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\thproj: \ss\the\outcsname\par}
+		\fi
+		\edef\tmp{\the\northdir} \ifx\tmp\empty \else
+			{\the\legendtextsize\ss\the\northdir north }
+		\fi
+		\edef\tmp{\the\magdecl} \ifx\tmp\empty \else
+			{\the\legendtextsize\ss\the\magdecl deg \par}
+		\fi
+		\vskip0.5cm
+		% end bruces addition
+		#%print comment
+		{
+		#\rightskip=0pt plus 3em\parskip=3bp
+		#\edef\tmp{\the\comment} \ifx\tmp\empty \else
+		#	{\the\legendtextsize\the\comment} \par\medskip
+		#\fi
+		%print cavelength and depth
+		\everypar{\hangindent=2em\hangafter=1}
+		\edef\tmp{\the\cavelength} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\cavelengthtitle: \ss\the\cavelength\par}
+		\fi
+		\edef\tmp{\the\cavedepth} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\cavedepthtitle: \ss\the\cavedepth\par}
+		\fi
+		# % start bruces addition
+		## %      altitude
+		#\edef\tmp{\the\cavemaxz} \ifx\tmp\empty \else
+		#	{\the\legendtextsize\si\the\depthrangetitle \ss\the\cavemaxz m to}
+		#\fi
+		#\edef\tmp{\the\caveminz} \ifx\tmp\empty \else
+		#	{\the\legendtextsize\ss\the\caveminz m \par} %above mean sea level
+		#\fi
+		# % end bruces addition
+
+		%print explorers names
+		\edef\tmp{\the\exploteam} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\explotitle: \ss\the\exploteam\quad\si\the\explodate\par}
+		\fi
+		%print surveyors names
+		\edef\tmp{\the\topoteam} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\topotitle: \ss\the\topoteam\quad\si\the\topodate\par}
+		\fi
+		 %%print the guides
+		\edef\tmp{\the\guide} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\thguide: \ss\the\guide\par}
+		\fi
+		%print cartographers names
+		\edef\tmp{\the\cartoteam} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\cartotitle: \ss\the\cartoteam\quad\si\the\cartodate\par}
+		\fi
+		%print synthesys name !!!  !!! with newtoks\synth \synth={Synth Name} in the thconfig
+		\edef\tmp{\the\synth} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\thsynth: \ss\the\synth\par}
+		\fi
+		%print the club
+		\edef\tmp{\the\club} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\thclub: \ss\the\club\par}
+		\fi
+		%%print the expedition
+		\edef\tmp{\the\expe} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\thexpe: \ss\the\expe\par}
+		\fi
+        %%print the web page
+		\edef\tmp{\the\wpage} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\thwpage: \ss\the\wpage\par}
+		\fi
+		# % start bruces addition (compilation version and date modified to use built-in 5.3.15 variables)
+		\edef\tmp{\the\thversion} \ifx\tmp\empty \else  %only write version and date if version is not emplty
+			{\the\legendtextsize\si\the\thversiontitleA: \ss\the\thversiontitleB \ss\the\thversion}
+		% \fi
+		% \edef\tmp{\the\currentdate} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\datetitle \ss\the\currentdate\par}
+		\fi
+
+		# % end bruces addition
+		%print copyrights
+		\edef\tmp{\the\copyrights} \ifx\tmp\empty \else
+			{\the\legendtextsize\ss\the\copyrights\par}
+		\fi
+		}
+		\formattedlegend
+		\color[0 0 0]
+		}
+
+	endcode
+endlayout
+
+
+#------------------------------
 layout layoutmapborder
 #<en> If you want to draw a frame around the map
 #<fr> Si vous voulez un cadre autour de votre topographie
@@ -1275,7 +1446,7 @@ endlayout
 #<en> CODE TO CUSTOMISE ATLAS OUTPUT
 #<fr> CODE POUR CUSTOMISER L'ATLAS
 #----------------------------------
-layout LayoutAtlasNorthArrow
+layout LayoutAtlasNorthArrow2
 #<en> This code is a redefinition of the default atlas definition
 #     that includes both north arrow & scale bar beside the navigation pane
 #     from Bruce Mutton (2019/08)
@@ -1324,7 +1495,40 @@ layout LayoutAtlasNorthArrow
 			}
 		}
 
+endlayout LayoutAtlasNorthArrow2
+
+
+layout LayoutAtlasNorthArrow
+#<en> Layout for the set of the Atlas North Arrow to override 
+#     the north arrow definition of the layout drawingconfig
+#     and use a smaller North arrow to avoid overlaps with the scale bar
+#     For that, it should be call first in the layout Altas of the .thconfig file.
+#<fr> Layout pour définir le set up de l'Atlas North Arrow.
+#     pour effacer la définition de la flèche du nord du layout drawingconfig
+#     et éviter la superposition de la flèche avec la barre d'échelle.
+#     Pour cela, il convient de placer l'appel à ce Layout avant tous les autres layouts
+#     dans le layout Atlas du .thconfig
+	code metapost
+		def s_northarrow (expr rot) =
+			begingroup
+				#interim defaultscale:=0.7; % scale your north arrow here
+				interim defaultscale:=0.5; % scale your north arrow here; 0.5 is the best value for atlas
+				T:=identity scaled defaultscale rotated -rot;
+				interim linecap:=squared;
+				interim linejoin:=rounded;
+				thfill (-.5cm,-.1cm)--(0,2.5cm)--(.5cm,-.1cm)--cycle;
+				pickup pencircle scaled (0.08cm * defaultscale);
+				thdraw (0,0)--(0,-2.5cm);
+				pickup pencircle scaled (0.16cm * defaultscale);
+				p:=(0.4cm,0.6cm);
+				thdraw ((p--(p yscaled -1)--(p xscaled -1)--(p scaled -1)) shifted (0,-1.0cm));
+				label.rt(thTEX("mg") scaled 1.6, (.6cm,-1.6cm)) transformed T;
+			endgroup;
+		enddef;
+	endcode
+		
 endlayout LayoutAtlasNorthArrow
+
 
 layout AtlasSetUp
 #<en> Layout for the set of the Atlas
