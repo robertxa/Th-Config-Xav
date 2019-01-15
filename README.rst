@@ -93,6 +93,10 @@ New areas are:
 
 3. bats (u:bats)
 
+4. tree-trunc (u:tronc)
+
+5. tree-leaves (u:feuilles)
+
 Templates for .thconfig and .th files (en)
 ------------------------------------------
 The folder ``Template_cave`` contains an example of a survey-folder structure and of some .th and .thconfig files with all the commands explained in french (<fr>) and english (<en>).
@@ -102,7 +106,7 @@ Have fun...
 
 
 Utilisation (fr)
-----------
+----------------
 
 1. Copier le fichier dans le dossier master/parent folder de votre cavité ou de votre base de données topographiques
 
@@ -180,6 +184,11 @@ Les nouvelles aires sont :
 2. guano (u:guano)
 
 3. chauves-souris (u:bats)
+
+4. tronc d'arbre (u:tronc)
+
+5. feuillage d'arbre (u:feuilles)
+
 
 Templates pour fichiers .thconfig et .th (fr)
 ---------------------------------------------
