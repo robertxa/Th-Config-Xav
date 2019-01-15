@@ -1,5 +1,7 @@
 History
 
+2019/01/12 : new areas tronc and feuilles
+
 2018/11/28 : READMEs translation
 			 TODO.txt file added
 			 History.txt file added
