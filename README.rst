@@ -93,9 +93,9 @@ New areas are:
 
 3. bats (u:bats)
 
-4. tree-trunc (u:tronc)
+4. tree-trunc (u:tronc; options -clip off -place top)
 
-5. tree-leaves (u:feuilles)
+5. tree-leaves (u:feuilles; option -clip off)
 
 Templates for .thconfig and .th files (en)
 ------------------------------------------
@@ -185,9 +185,9 @@ Les nouvelles aires sont :
 
 3. chauves-souris (u:bats)
 
-4. tronc d'arbre (u:tronc)
+4. tronc d'arbre (u:tronc ; options -clip off -place top)
 
-5. feuillage d'arbre (u:feuilles)
+5. feuillage d'arbre (u:feuilles ; option -clip off)
 
 
 Templates pour fichiers .thconfig et .th (fr)
