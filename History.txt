@@ -1,6 +1,9 @@
 History
 
-2019/01/12 : new areas tronc and feuilles
+2019/01/19 : Separates the thconfig tempalte for plan and extended views
+             Add a thconfig template to generate an Atlas
+
+2019/01/12 : New areas tronc and feuilles
 
 2018/11/28 : READMEs translation
 			 TODO.txt file added

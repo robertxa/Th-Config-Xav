@@ -1,7 +1,7 @@
 Therion Config file
 ===================================================
 
-Version 2.0 B1 - Oct 29, 2018
+Version 2.0 B2- Jan 19, 2019
 
 Created by: / Créé par : Xavier Robert
 

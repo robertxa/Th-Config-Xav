@@ -1,7 +1,7 @@
 Therion Config file
 ===================================================
 
-Version 2.0 B1 - Oct 29, 2018
+Version 2.0 B2 - Jan 19, 2019
 
 Created by: / Créé par : Xavier Robert
 
@@ -16,11 +16,15 @@ Publié sous la licence Creative Commons Attribution-ShareAlike-NonCommecial:
 
 Templates for .thconfig and .th files (en)
 ------------------------------------------
-In this folder, two files are present:
+In this folder, four files are present:
 
-1. Cave_tmp.thconfig: this is a template for a thconfig file (note the upper case for the first letter; it helps a lot with completion in the terminal...)
+1. Cave_tmp-plan.thconfig: this is a template for a plan-view thconfig file (note the upper case for the first letter; it helps a lot with completion in the terminal...)
 
-2. cave_tmp_tot.th: this is a .th file that merge data files (stored here in the folder th/) and drawing files (stored here in the folder th2/)
+2. Cave_tmp-extended.thconfig: this is a template for an extended projection thconfig file (note the upper case for the first letter; it helps a lot with completion in the terminal...)
+
+3. Cave_tmp-atlas.thconfig: this is a template for a thconfig file to generate a plan-view atlas (note the upper case for the first letter; it helps a lot with completion in the terminal...)
+
+4. cave_tmp_tot.th: this is a .th file that merge data files (stored here in the folder th/) and drawing files (stored here in the folder th2/)
 
 Three folders are also present:
 
@@ -59,11 +63,15 @@ Quick Therion cookbook/workflow (en)
 
 Templates pour fichiers .thconfig et .th (fr)
 ---------------------------------------------
-Dans ce dossier, deux fichiers sont présents :
+Dans ce dossier, quatre fichiers sont présents :
 
-1. Cave_tmp.thconfig : C'est un fichier thconfig template pour (noter la première lettre du nom en majuscule ; cela aide grandement si utilisation de la complétion automatique avec l'utilisation du terminal...)
+1. Cave_tmp-plan.thconfig : C'est un fichier thconfig template pour exporter le plan (noter la première lettre du nom en majuscule ; cela aide grandement si utilisation de la complétion automatique avec l'utilisation du terminal...)
 
-2. cave_tmp_tot.th : C'est un template de fichier .th qui fait la synthèse de tous les fichiers de données (ici dans le dossier th/) et de dessins (ici dans le dossier th2/)
+2. Cave_tmp-extended.thconfig : C'est un fichier thconfig template pour exporter la coupe développée (noter la première lettre du nom en majuscule ; cela aide grandement si utilisation de la complétion automatique avec l'utilisation du terminal...)
+
+3. Cave_tmp-atlas.thconfig : C'est un fichier thconfig template pour exporter le plan sous forme d'un Atlas (noter la première lettre du nom en majuscule ; cela aide grandement si utilisation de la complétion automatique avec l'utilisation du terminal...)
+
+4. cave_tmp_tot.th : C'est un template de fichier .th qui fait la synthèse de tous les fichiers de données (ici dans le dossier th/) et de dessins (ici dans le dossier th2/)
 
 Il y a aussi trois autres dossiers :
 

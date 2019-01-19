@@ -5,12 +5,15 @@ TO DO
 	- ajouter ligne tronc ; add a point tree_trunc
 	- ajouter point stalactites/mites brisées ; add a point broken stalactites/mites
 	
-	- Upgrade the layout for the a great atlas definition !
+	- Upgrade the layout for the a great/better atlas definition !
 	- Debug the depth point definition !
 	- 
 
 DONE
 	- Add a layout for the a great atlas definition ! (2019/01/09)
 	- Add a shell point (2019/01/09)
-	- 
+	- Add an area tronc (2019/01/12)
+	- Add an area feuilles (2019/01/12)
+	- Add a basic layout for Atlas export (2019/01/19)
+	-
 	
