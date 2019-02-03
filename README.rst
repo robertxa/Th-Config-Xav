@@ -85,6 +85,12 @@ New lines are:
 
 6. surface (u:surf; option -clip off)
 
+7. rail (u:rail)
+
+8. plan walk (u:planwalk)
+
+9. handrail/rambarde (u:handrail)
+
 New areas are:
 
 1. mud (u:boue)
@@ -96,6 +102,8 @@ New areas are:
 4. tree-trunc (u:tronc; options -clip off -place top)
 
 5. tree-leaves (u:feuilles; option -clip off)
+
+6. tunnel initiation (u:galerie)
 
 Templates for .thconfig and .th files (en)
 ------------------------------------------
@@ -177,6 +185,12 @@ Les nouvelles lignes sont :
 
 6. surface (u:surf ; option -clip off)
 
+7. rail (u:rail)
+
+8. chemin construit (u:planwalk)
+
+9. rambarde (u:handrail)
+
 Les nouvelles aires sont :
 
 1. boue (u:boue)
@@ -188,6 +202,8 @@ Les nouvelles aires sont :
 4. tronc d'arbre (u:tronc ; options -clip off -place top)
 
 5. feuillage d'arbre (u:feuilles ; option -clip off)
+
+6. départ d'une galerie (u:galerie)
 
 
 Templates pour fichiers .thconfig et .th (fr)
