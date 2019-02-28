@@ -1,0 +1,135 @@
+encoding  utf-8
+    
+# 1-SOURCES 
+source test.th
+source test.th2
+
+# Add config file
+#input ../../../../config.thc	# XR; Not for the test
+
+  
+# 2-LAYOUT   
+layout xviexport
+	scale 1 1000
+	grid-size 10 10 10 m
+	grid bottom
+endlayout
+  
+layout my_layout
+	cs UTM17  
+	base-scale 1 600
+	scale 1 500
+	scale-bar 50 m
+	color map-fg [100 100 80]
+	transparency on
+	opacity 75
+	statistics explo-length off
+	statistics topo-length off
+	legend off
+	legend-width 15 cm
+	map-header 105 90 nw
+	map-header-bg off  
+	layers on
+	symbol-hide line survey
+	grid off
+  
+	######## Code Metapost pour modifier l aspect des symboles ####### 
+  
+	# Titre          
+	code tex-map
+		% Output map title as determined by Therion 5.3 is stored in cavename. 
+		% It will be empty if there are multiple maps selected for any one projection
+		% AND there are multiple source surveys identified in the thconfig file 
+		% ie Therion can not infer a unique title from the input data given.
+		% This code allows you to define an output map title {cavename} if it happens to be empty
+  
+		\edef\temp{\the\cavename}   % cavename from Therion
+		\edef\nostring{}            % empty string
+		\ifx\temp\nostring          % test if cavename is empty
+			% if empty reassign cavename to describe selected maps as a group
+			\cavename={Test Cave} 		
+		\else % if not empty keep the value set by therion, or assign an override cavename here
+		\fi
+	endcode
+	
+	
+	
+	code metapost
+	
+	###### Altitude point from Therion Wiki (Thomas Holder) ######
+	def p_altitude (expr pos) =
+			T:=identity shifted pos;
+			pickup PenD;
+			p:=(-.3u,0)--(.3u,0);
+			thdraw p; thdraw p rotated 90;
+			p:=fullcircle scaled .2u;
+			thclean p; thdraw p;
+		enddef;
+		vardef p_label@#(expr txt,pos,rot,mode) =
+			if mode=1:
+				thdrawoptions(withcolor .8red + .4blue);
+				p_altitude(pos);
+				#profondeur := (\thaltitude-\cavemaxz);
+				% append "m" to label
+				picture txtm;
+				txtm:=image(
+					draw txt;
+					interim labeloffset:=0;
+					#label.urt(btex profondeur { m} etex, lrcorner txt);
+					label.urt(btex \thaltitude { m} etex, lrcorner txt);
+					#label.urt(btex \thheight { m} etex, lrcorner txt);
+				);
+				% give extra offset in case of l/r/t/b alignment
+				pair ctmp;
+				ctmp:=center thelabel@#("x", (0,0));
+				if (xpart ctmp * ypart ctmp)=0:
+					interim labeloffset:=(.4u);
+				else: % diagonal alignment
+					interim labeloffset:=(.2u);
+				fi;
+				% draw label
+				lab:=thelabel@#(txtm, pos);
+				draw lab _thop_; % use color
+				thdrawoptions();
+				bboxmargin:=0.8bp;
+				write_circ_bbox((bbox lab) smoothed 2);
+			else:
+				if mode=7: interim labeloffset:=(u/8) fi;
+				lab:=thelabel@#(txt, pos);
+				if mode>1: pickup PenD fi;
+				if mode=2: process_uplabel;
+				elseif mode=3: process_downlabel;
+				elseif mode=4: process_updownlabel;
+				elseif mode=5: process_circledlabel;
+				elseif mode=6: process_boxedlabel;
+				elseif mode=7: process_label(pos,rot);  % station name
+				elseif mode=8: process_filledlabel(pos, rot);
+				else: process_label(pos,rot); fi;
+    		fi;
+	  	enddef;
+	  	
+	  	###### New point depth ######
+	  	def p_u_prof (expr pos, R, S, A) =
+			T:=identity aligned A scaled 1.5S rotated R shifted pos;
+			# calcul of the depth of the point: altitude of the point - altitude max of the cave
+			#                                   (it will be better if altitude of the main entrance
+			#                                    defined by the option -entrance of the survey block)
+			depth := \thaltitude - \cavemaxz;
+			#depth := \numexpr \thaltitude - \cavemaxz \relax;
+			# Print the label
+			begingroup
+				interim defaultscale:=1;
+				label (btex {-- } depth {m --} etex, (0, 0)) transformed T withcolor(0.5,0.,0.);
+					# 1) Why is profondeur value NOT printed ? Where is the error ?
+			endgroup;
+		enddef;
+		initsymbol("p_u_prof")
+
+	
+	endcode    
+
+endlayout
+
+# 3-EXPORTS   
+ #export map -fmt xvi -layout xviexport -o test.xvi  
+ export map -o test-plan2018.pdf -layout my_layout

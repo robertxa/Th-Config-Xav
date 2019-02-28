@@ -1,0 +1,34 @@
+encoding  utf-8
+
+survey cambiopitec_alta -title "cambiopitec_alta" -entrance "7"
+
+  centerline
+    date 2018.08.26 
+      team "Carola Mick"
+      team "Jean-Loup Guyot"
+      team "Jean-Sébastien Moquet"
+    # team GSBM - Groupe Spéléo Bagnols Marcoule
+    # team ECA - Espeleo Club Andino 
+    # declination 0.00 degrees
+    
+    cs lat-long
+    fix 7  -5.62977  -78.38457  1410
+    
+    units length meters
+    units compass clino degrees
+    data normal from to length backcompass clino left right up down
+ 
+    extend right 
+    0  1   0.00   0.00   0.00  0.00  4.80  7.20  3.80 
+    1  2  16.05 323.00 -24.00  6.50  0.00  4.90  1.50  
+    2  3  34.10 304.00  16.00  5.60  2.80  2.90  0.70 
+    3  4  26.00 304.00   8.0   5.70  5.30  5.3   1.40 
+    4  5  14.50 285.00   2.0  10.30  0.00  7.90  1.90 
+    5  6   8.12 242.00 -18.00  5.60  4.50  7.50  1.30 
+    6  7  15.70 267.00 -59.00  6.50  3.00 20.50  0.60 
+    
+  endcenterline
+  
+
+endsurvey
+

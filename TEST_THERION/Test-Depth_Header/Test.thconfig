@@ -1,0 +1,160 @@
+encoding  utf-8
+    
+# 1-SOURCES 
+source test.th
+source test.th2
+
+# Add config file
+input config.thc 
+  
+  
+# 2-LAYOUTS   
+layout xviexport
+	scale 1 500
+	grid-size 10 10 10 m
+	grid bottom
+endlayout
+  
+layout my_layout
+
+	# Call the config settings (Layout config inside the config.thc file)
+	#copy Testdeph	# this is the layout that calculs the new depths +/- variables
+					# If I uncomment it, I get the error:
+					#         ! Missing number, treated as zero<to be read again> \relax
+					#		  l.755 ...hc = \numexpr \cavemaxzc - \altref \relax
+					# It seems that it does not take the argument \altref defined in this layout my_layout
+					# WHY ?????
+					#	- Is it because the argument \altref is not defined as a token?
+					
+	copy headerl	# This is the layout that defines what is in the header (seems to work)
+	copy langue-en	# This is the layout that defines the language of the output (Work great)
+
+	cs UTM18
+	base-scale 1 500
+	scale 1 500
+	scale-bar 50 m
+	color map-fg [100 100 80]
+	transparency on
+	opacity 75
+	statistics explo-length off
+	statistics topo-length off
+	statistics copyright all
+	legend off
+	legend-width 14.5 cm
+	map-header 0 -5 nw
+	map-header-bg off
+	layers on
+	symbol-hide line survey
+	grid off
+  
+
+	######## Code Metapost pour modifier l aspect des symboles ####### 
+  
+	# Titre          
+	code tex-map
+		\edef\temp{\the\cavename}   % cavename from Therion
+		\edef\nostring{}            % empty string
+		\ifx\temp\nostring          % test if cavename is empty
+			% if empty reassign cavename to describe selected maps as a group
+			\cavename={Test Depth} 		
+		\else % if not empty keep the value set by therion, or assign an override cavename here
+		\fi
+		\newtoks\expe \expe={Nor Perú 2018}
+		% All the definition above are OK
+		
+		% \altref should be the altitude of the entrance
+		#\newtoks\altref \altref={}		% Does not work as I do not know how to pass the value
+										% of a token to a variable to allow calculs
+		
+		#\newcount\altref \altref{1000}	% Does not work
+		\edef\altref{1000}				% It does work IF the block code tex-map/endcode
+										% that make the nes depths calculs is inside the 
+										% layout my_layout.
+										% It does not work if this block is inide a layout
+										% Testdeph inside the file config.thc, as if
+										% the variable \altref is not pass
+										% Egual, if this variable is empty ({}), it generates
+										% an error ! Missing number, treated as zero.
+										%          <to be read again> \relax 
+										%          l.774 ...hc = \numexpr \cavemaxzc - \altref \relax
+	endcode
+
+
+	#################################################
+	# TEST to calcul the relative depth of a cave
+	# This does work if it is included inside the config.thc and not here.... Why ?
+	code tex-map
+		%\input calc	% Input the calc package ?
+		\edef\nostring{}
+		% give the \altref value to a new token \altreft (to be able to use \ifx test)
+		\newtoks\altreft \altreft={\altref}
+		% Test if \altreft is empty or not
+		\edef\tmp{\the\altreft}
+		\ifx\tmp\empty
+		\else	% if \altreft is not empty
+			\ifx\cavemaxz\nostring
+			\else
+				% Definition of the numerical variable \cavemaxzc
+				%\newcount\cavemaxzc \cavemaxzc{1008}
+				
+				%\edef\cavemaxzc{1008}	% If a number is given, it works well
+				
+				%\let\ob={
+				%	\cavemaxzc\ob abcde}
+				%	\def\obb{\ob}
+				%	\cavemaxzc\obb xyz}
+				%\edef\cavemaxzc{\expandafter{\cavemaxz}}	% If a number is given, it works well
+				
+				% If the variable is defined with: 
+												% \number\cavemaxz, 
+												% \the\cavemaxz, 
+												% \string\cavemaxz 
+												% \expandafter{\cavemaxz}
+				% everything crashes !
+				% Test by defining the variable as a token or a count : it crashes
+				#\newcount\cavemaxzc
+				#\newtoks\cavemaxzc
+				#\cavemaxzc{\number\cavemaxz}
+				#\edef\cavemaxzc{\number\cavemaxz}
+				#\cavemaxzc{\the\cavemaxz}
+				#\edef\cavemaxzc{\the\cavemaxz}
+			
+				\newcount\maxdepthc
+				\maxdepthc = \numexpr \cavemaxzc - \altref \relax
+						% This equation works if the variables are numbers, 
+						% not if one of them is a token or a count
+				#\maxdepthc = \advance \cavemaxzc to -\altref
+						% I also try with the command \advance \cavemaxzc to -\altref
+						% But it also failed: ! Missing number, treated as zero.
+						%                     <to be read again>\advance 
+						%                     l.793 \maxdepthc = \advance \cavemaxzc to -\altref
+				\maxdepthc = \numexpr \expandafter{\cavemaxz} - \altref \relax
+				%\maxdepthc = \advance \expandafter{\cavemaxz} by -\altref
+				%\edef\maxdepthc{\advance \expandafter{\cavemaxz} by -\altref}
+						% the function \expandafter does not seem to work. Why ?
+						% It should be the function that pass the value of a token to an other token
+						% (variable or function...). 
+						% See https://www.overleaf.com/learn/latex/Articles/What_is_a_TeX_token_list
+			\fi
+			\ifx\caveminz\nostring
+			\else
+				% Exactly same remarks for the variable \caveminzc than \cavemaxzc
+				\edef\caveminzc{958}				
+				\newcount\mindepthc
+				\mindepthc = \numexpr \caveminzc - \altref \relax
+			\fi
+		\fi
+		
+		# Several problems :
+		#	1- I do not understood how to pass the value of a token to a single variable. 
+		#		How can I do that ?
+	
+	endcode    
+	#################################################
+	
+endlayout
+ 
+  
+# 3-EXPORTS   
+export map -o test-plan2018.pdf -layout my_layout
+

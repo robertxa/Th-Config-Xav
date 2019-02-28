@@ -1,0 +1,79 @@
+# Ignore files:
+# old Files
+**.ai
+**.dxf
+**.doc
+**.docx
+**.rtf
+**.RTF
+**.eml
+**.ppt
+**.dwg
+**.dgn
+**.cvx
+
+**.tif
+**.jpg
+**.png
+
+# Scan Carnet
+**.JPG
+**.NEF
+
+# data excel
+**.xls
+**.XLS
+**.xlsx
+
+# Background images 
+**.ppm
+**.bmp
+
+# Therion Output
+**.kml
+**.kmz
+**.lox
+**.pdf
+**.xvi
+**.log
+**.dat
+**.svg
+**.3dmf
+**.vtk
+**.zip
+**.sql
+
+# Therion shp outputs
+**.dbf
+**.prj
+**.shp
+**.shx
+
+# 3D
+**/CaveView
+**.html
+
+# Autres
+**.php
+**.error2
+**.tar.gz
+**.backup
+
+# GIS
+**.xml
+**.ovr
+**.tiff
+**.mxd
+**.qgs
+**.wpt
+**.GPX
+**.gpx
+**.vrt
+**.jp2
+**.prn
+**.dbf
+**.qpj
+**.trk
+
+
+

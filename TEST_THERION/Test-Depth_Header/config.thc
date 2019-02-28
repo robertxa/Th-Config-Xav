@@ -1,0 +1,263 @@
+encoding  utf-8
+
+# Licence
+#
+#<en> Released under a Creative Commons Attribution-ShareAlike-NonCommecial License:
+#
+# Written by: / Ecrit par : Xavier Robert
+#
+
+### Layouts Languages
+
+#<en> Different layouts to manage languages (en, fr, es)
+#     In your thconfig, call the layout langue-XX where XX is en, fr or es
+#     You need to add one of these layout if you use the layout headerl or header_coupe
+#     If you want to add one of the field club, syntesys, web page, expedition, guide, 
+#        add the following line in the code tex-map/endcode block of your layout in the thconfig
+#		   \newtoks\YYYY \YYYY={the value of your variable}
+#        where YYYY = club, synth, wpage, expe or guide
+#
+#<en> You may add new fields, following the examples in the layouts. 
+#     If you add a new field, you need to edit the layout(s) headerl and/or header_coupe
+
+layout langue-en
+	# Set the language english
+	language en
+	
+	code tex-map
+		% Definition of variables for the tuned headers :
+		\newtoks\thversiontitleB \thversiontitleB={Therion }
+		\newtoks\thversiontitleA \thversiontitleA={Compiled}
+		\newtoks\datetitle \datetitle={on }
+		\newtoks\thproj \thproj={Projection}
+		\newtoks\thclub \thclub={Club(s)}
+		\newtoks\thsynth \thsynth={Synthesys}
+		\newtoks\thwpage \thwpage={Web page}
+		\newtoks\thexpe \thexpe={Expedition}
+		\newtoks\depthrangetitle \depthrangetitle={Depth range from }
+		\newtoks\thguide \thguide={Guide(s)}
+
+		# Initiate variables to avoid erroirs if empty
+		\newtoks\club \club={}
+		\newtoks\synth \synth={}
+		\newtoks\wpage \wpage={}
+		\newtoks\expe \expe={}
+		\newtoks\guide \guide={}
+		
+		%%%%%%%%%%%%%%% TEST %%%%%%%%%%%%%%%%%%%%%%%%
+		# Define the variables to avoid errors if empty
+		\newtoks\altreft \altreft={}
+		#\newcount\altref{}
+		\edef\altref{}
+		%%%%%%%%%%%%% END TEST %%%%%%%%%%%%%%%%%%%%%%
+		
+	endcode	
+	
+endlayout
+
+
+
+# TEST###################################
+layout Testdeph
+
+	code tex-map
+		# TEST
+		#\newcount\altref
+		#\altref=1000
+		#\newcount\altref \altref={}
+		\newtoks\altreft \altreft={}
+		\edef\altref{}
+		
+		\edef\nostring{}
+		% give the \altref value to a new token \altreft
+		\newtoks\altreft \altreft={\altref}
+		% Test if \altreft is empty or not
+		\edef\tmp{\the\altreft}
+		\ifx\tmp\empty
+		\else	% if \altreft is not empty
+			\ifx\cavemaxz\nostring
+			\else
+				% Definition of the numerical variable \cavemaxzc
+				#\newcount\cavemaxzc \cavemaxzc{1008}
+				\edef\cavemaxzc{1008}	% If a number is given, it works well
+				% If the variable is defined with nothing, 
+												% \number\cavemaxz, 
+												% \the\cavemaxz, 
+												% \string\cavemaxz 
+				% everything crashes !
+				% Test by defining the variable as a token or a count : it crashes
+				#\newcount\cavemaxzc
+				#\newtoks\cavemaxzc
+				#\cavemaxzc{\number\cavemaxz}
+				#\edef\cavemaxzc{\number\cavemaxz}
+				#\cavemaxzc{\the\cavemaxz}
+				#\edef\cavemaxzc{\the\cavemaxz}
+			
+				\newcount\maxdepthc
+				\maxdepthc = \numexpr \cavemaxzc - \altref \relax
+						% This equation works if the variables are numbers, 
+						% not if one of them is a token or a count
+				#\maxdepthc = \advance \cavemaxzc to -\altref
+						% I also try with the command \advance \cavemaxzc to -\altref
+						% But it also failed: ! Missing number, treated as zero.
+						%                     <to be read again>\advance 
+						%                     l.793 \maxdepthc = \advance \cavemaxzc to -\altref
+			\fi
+			\ifx\caveminz\nostring
+			\else
+				% test with nothing, \number, \the, \string and everything crashes !
+				\edef\caveminzc{958}
+				#\newcount\cavemaxzc
+				#\cavemaxzc{\number\cavemaxz}
+				#\edef\cavemaxzc{\cavemaxz}
+				
+				\newcount\mindepthc
+				\mindepthc = \numexpr \caveminzc - \altref \relax
+			\fi
+		\fi
+		
+		# Several problems :
+		#	1- I do not understood how to pass the value of a token to a single variable. 
+		#		How can I do that ?
+		
+	endcode    
+endlayout
+# END TEST###################################
+
+
+
+#------------------------------
+layout headerl
+#<en> Layout to change the header (plan projection)
+#     This code is experimental redefinition of map header and based on the work of
+#     Bruce Mutton           Therion 5.3.15 make use of new variables
+
+	#<en> This one affects maps only
+	code tex-map
+		\legendcontent={%
+			\hsize=\legendwidth
+			\color[0 0 0]\the\legendtextcolor
+			\ifnortharrow\vbox to 0pt{\line{\hfil\northarrow}\vss}\fi
+			%print cave map name
+			\edef\tmp{\the\cavename} \ifx\tmp\empty \else
+				{\the\legendtextheadersize\the\cavename}\vskip0.5cm
+			\fi
+			%print comment
+			{\rightskip=0pt plus 3em\parskip=3bp
+			\edef\tmp{\the\comment} \ifx\tmp\empty \else
+				{\the\legendtextsize\the\comment} \par\medskip\vskip1cm
+			\fi}
+			%print scalebar
+			\ifscalebar\scalebar\vskip1cm\fi
+
+		% start bruces addition
+		# %    CS
+		\edef\tmp{\the\outcsname} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\thproj: \ss\the\outcsname\par}
+		\fi
+		\edef\tmp{\the\northdir} \ifx\tmp\empty \else
+			{\the\legendtextsize\ss\the\northdir north }
+		\fi
+		\edef\tmp{\the\magdecl} \ifx\tmp\empty \else
+			{\the\legendtextsize\ss\the\magdecl deg \par}
+		\fi
+		\vskip0.5cm
+		% end bruces addition
+		#%print comment
+		{
+		#\rightskip=0pt plus 3em\parskip=3bp
+		#\edef\tmp{\the\comment} \ifx\tmp\empty \else
+		#	{\the\legendtextsize\the\comment} \par\medskip
+		#\fi
+		%print cavelength and depth
+		\everypar{\hangindent=2em\hangafter=1}
+		\edef\tmp{\the\cavelength} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\cavelengthtitle: \ss\the\cavelength\par}
+		\fi
+		
+		%%%%%%%%%%%%% TEST %%%%%%%%%%%%%%%%%%%%%%
+		% Modifications to write the depth as +10 m / -45 m for instance
+		\edef\tmp{\the\cavedepth} \ifx\tmp\empty \else
+			% Test if the token \altreft is empty or not
+			\edef\tmp{\the\altreft}
+			\ifx\tmp\empty
+				% If the token \altreft is empty, write the total denivelation 
+				{\the\legendtextsize\si\the\cavedepthtitle: \ss\the\cavedepth\par}	
+			\else
+				% If the token \altreft is not empty
+				\edef\pluss{+}
+				\edef\mm{ m}
+				% Test if the altitude maximum of the cave is the same as the entrance
+				\ifnum \maxdepthc = 0
+					% If the altitude maximum of the cave is the same as the entrance
+					% write only the negative depth in regards to the entrance
+					\ifnum \mindepthc = 0
+						{\the\legendtextsize\si\the\cavedepthtitle: \ss\the\cavedepth\par}
+					\else
+						{\the\legendtextsize\si\the\cavedepthtitle: \ss\the\mindepthc \mm\par}
+					\fi
+				\else
+					% If the altitude maximum of the cave is NOT the same as the entrance
+					% write both the negative and positive depth in regards to the entrance
+					\ifnum \mindepthc = 0
+						{\the\legendtextsize\si\the\cavedepthtitle: \ss\pluss \ss\the\maxdepthc \mm\par}
+					\else
+						{\the\legendtextsize\si\the\cavedepthtitle: \ss\pluss \ss\the\maxdepthc \mm { /} \ss\the\mindepthc \mm\par}
+					\fi
+				\fi
+			\fi
+		\fi
+		%%%%%%%%%%%%% END TEST %%%%%%%%%%%%%%%%%%%%%%
+
+		%print explorers names
+		\edef\tmp{\the\exploteam} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\explotitle: \ss\the\exploteam\quad\si\the\explodate\par}
+		\fi
+		%print surveyors names
+		\edef\tmp{\the\topoteam} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\topotitle: \ss\the\topoteam\quad\si\the\topodate\par}
+		\fi
+		 %%print the guides
+		\edef\tmp{\the\guide} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\thguide: \ss\the\guide\par}
+		\fi
+		%print cartographers names
+		\edef\tmp{\the\cartoteam} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\cartotitle: \ss\the\cartoteam\quad\si\the\cartodate\par}
+		\fi
+		%print synthesys name !!!  !!! with newtoks\synth \synth={Synth Name} in the thconfig
+		\edef\tmp{\the\synth} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\thsynth: \ss\the\synth\par}
+		\fi
+		%print the club !!!  !!! with newtoks\club \club={Clubs Names} in the thconfig
+		\edef\tmp{\the\club} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\thclub: \ss\the\club\par}
+		\fi
+		%%print the expedition !!!  !!! with newtoks\expe \expe={Expeditions Names} in the thconfig
+		\edef\tmp{\the\expe} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\thexpe: \ss\the\expe\par}
+		\fi
+        %%print the web page !!!  !!! with newtoks\wpage \wpage={web page link(s)} in the thconfig
+		\edef\tmp{\the\wpage} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\thwpage: \ss\the\wpage\par}
+		\fi
+		# % start bruces addition (compilation version and date modified to use built-in 5.3.15 variables)
+		\edef\tmp{\the\thversion} \ifx\tmp\empty \else  %only write version and date if version is not emplty
+			{\the\legendtextsize\si\the\thversiontitleA: \ss\the\thversiontitleB \ss\the\thversion}
+		% \fi
+		% \edef\tmp{\the\currentdate} \ifx\tmp\empty \else
+			{\the\legendtextsize\si\the\datetitle \ss\the\currentdate\par}
+		\fi
+		# % end bruces addition
+		
+		%print copyrights
+		\edef\tmp{\the\copyrights} \ifx\tmp\empty \else
+			{\the\legendtextsize\ss\the\copyrights\par}
+		\fi
+		}
+		\formattedlegend
+		\color[0 0 0]
+		}
+
+	endcode
+endlayout

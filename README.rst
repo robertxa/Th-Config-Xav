@@ -110,6 +110,11 @@ Templates for .thconfig and .th files (en)
 The folder ``Template_cave`` contains an example of a survey-folder structure and of some .th and .thconfig files with all the commands explained in french (<fr>) and english (<en>).
 You can use these files if you modify them according to your project.
 
+Folder TEST_THERION (en)
+------------------------
+This folder contains test cases used for the development of new function for the config.thc. Everything here is in development, and do not really work.
+If you have hints, do not hesitate to contact me.
+
 Have fun...
 
 
@@ -210,6 +215,11 @@ Templates pour fichiers .thconfig et .th (fr)
 ---------------------------------------------
 Le dossier ``Template_cave`` contient un exemple de la structure d'un dossier d'une topographie et de quelques fichiers .th et .thconfig avec les commandes principales expliquées/décrites en français (<fr>) et en anglais (<en>).
 Vous pouvez utiliser ces fichiers en les adaptant à votre project.
+
+Dossier TEST_THERION (fr)
+------------------------
+Ce dossier contient des exemples-tests pour le développement de nouvelles fonction du config.thc. Tout ce qui est ici est en développement et ne fonctionne pas correctement.
+Si vous avez des idées ou des solutions pour aider à ce développement, n'hésitez pas à me contacter.
 
 Bon courage...
 

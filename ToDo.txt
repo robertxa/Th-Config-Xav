@@ -6,7 +6,8 @@ TO DO
 	- ajouter point stalactites/mites brisées ; add a point broken stalactites/mites
 	
 	- Upgrade the layout for the a great/better atlas definition !
-	- Debug the depth point definition !
+	- Add a depth point definition (based on the altitude point ?) ! I need help for that... (See TEST_THERION/ folder)
+	- Add the possibility to modify the header to write the cave's depth as +xx m / -yy m and not the total depth. I need help for that !  (See TEST_THERION/ folder)
 	- 
 
 DONE
