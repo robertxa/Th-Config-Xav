@@ -85,6 +85,7 @@ layout my_layout
 	# This does work if it is included inside the config.thc and not here.... Why ?
 	code tex-map
 		%\input calc	% Input the calc package ?
+		%\input \etex 
 		\edef\nostring{}
 		% give the \altref value to a new token \altreft (to be able to use \ifx test)
 		\newtoks\altreft \altreft={\altref}
@@ -97,12 +98,8 @@ layout my_layout
 				% Definition of the numerical variable \cavemaxzc
 				%\newcount\cavemaxzc \cavemaxzc{1008}
 				
-				%\edef\cavemaxzc{1008}	% If a number is given, it works well
+				\edef\cavemaxzc{1008}	% If a number is given, it works well
 				
-				%\let\ob={
-				%	\cavemaxzc\ob abcde}
-				%	\def\obb{\ob}
-				%	\cavemaxzc\obb xyz}
 				%\edef\cavemaxzc{\expandafter{\cavemaxz}}	% If a number is given, it works well
 				
 				% If the variable is defined with: 
@@ -120,21 +117,41 @@ layout my_layout
 				#\edef\cavemaxzc{\the\cavemaxz}
 			
 				\newcount\maxdepthc
+				%\maxdetphc = {\char 49}
+				%\char 48 \char 48 \char 56
+				\newcount\test
+				
+				%\string{\the\cavemaxz}
+				%\number\cavemaxz
+				%\string\cavemaxz 
+				%\expandafter{\cavemaxz}
+				\meaning\cavemaxz
+				\meaning\toks43
+				\the\toks43
+				
+				% The token \cavemaxz refers to the token \toks43
+				%\test = \the\cavemaxz
+				%\test = \the\toks43
+				%\edef\test2{\the\cavemaxz}
+				\edef\test2{\the\toks43}
+				\meaning\test2
+				
+				%\maxdepthc = \numexpr \expandafter{\test2} - \altref \relax
+				\maxdepthc = \numexpr \test2 - \altref \relax
 				\maxdepthc = \numexpr \cavemaxzc - \altref \relax
 						% This equation works if the variables are numbers, 
 						% not if one of them is a token or a count
-				#\maxdepthc = \advance \cavemaxzc to -\altref
-						% I also try with the command \advance \cavemaxzc to -\altref
-						% But it also failed: ! Missing number, treated as zero.
-						%                     <to be read again>\advance 
-						%                     l.793 \maxdepthc = \advance \cavemaxzc to -\altref
-				\maxdepthc = \numexpr \expandafter{\cavemaxz} - \altref \relax
+						
+				%\maxdepthc = \numexpr \expandafter{\cavemaxz} - \altref \relax
+				%\maxdepthc = \numexpr \expandafter\the\cavemaxz - \altref \relax
+				%\maxdepthc = \numexpr \the\cavemaxz - \altref \relax
+				%\maxdepthc = \expandafter\numexpr\cavemaxz - \altref \relax
 				%\maxdepthc = \advance \expandafter{\cavemaxz} by -\altref
-				%\edef\maxdepthc{\advance \expandafter{\cavemaxz} by -\altref}
 						% the function \expandafter does not seem to work. Why ?
 						% It should be the function that pass the value of a token to an other token
 						% (variable or function...). 
 						% See https://www.overleaf.com/learn/latex/Articles/What_is_a_TeX_token_list
+				%\maxdepthc = \numexpr \meaning\cavemaxz - \meaning\altref \relax
 			\fi
 			\ifx\caveminz\nostring
 			\else
