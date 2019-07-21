@@ -103,7 +103,7 @@ text fr "line u:sentier" "sentier"
 text es "line u:sentier" "sendero"
 
 text en "line u:shell" "shell"
-text fr "line u:shell" "fossil"
+text fr "line u:shell" "fossile"
 text es "line u:shell" "fosíl"
 
 # Correction texte espagnol
@@ -992,8 +992,9 @@ layout drawingconfig
 			cesta := za--zb;
 			ss := (origin for t=1 upto 360 turns: -- dir t scaled t endfor) scaled (radius/turns/360);
 			thdraw ss withcolor (0.3);
-			thdraw (cesta cutbefore ss) withcolor (0.3);
+			thdraw (cesta cutbefore ss) withcolor (0.6);
 		enddef;
+		initsymbol ("p_u_shell");
 		
 		#<en> Define Danger symbol
 		#<fr> Définition du point Danger

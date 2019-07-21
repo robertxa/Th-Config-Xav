@@ -4,13 +4,10 @@ encoding  utf-8
 
 
 
-scrap Cambio1 -projection plan -author 2019 "Jean Loup/Guyot" -copyright 2018 "licence CCby-nc-sa : http://creativecommons.org/licenses/by-nc-sa/3.0/" -scale [-128.0 -128.0 600.4412 -128.0 0.0 0.0 18.502406479999998 0.0 m]
+scrap Cambio1 -projection plan -copyright 2018 "licence CCby-nc-sa : http://creativecommons.org/licenses/by-nc-sa/3.0/" -scale [-128.0 -128.0 600.4412 -128.0 0.0 0.0 18.502406479999998 0.0 m]
 
-point 76.88888888888889 252.0 breakdown-choke -orientation 309.1 -scale xl
-
-point 69.1503267973856 242.68954248366015 breakdown-choke -orientation 309.1 -scale xl
-
-point 190.2222222222222 128.0 u:prof -align bottom
+#point 190.2222222222222 128.0 u:prof -align bottom
+#point 190.2222222222222 128.0 u:prof
 
 #point 190.2222222222222 128.0 altitude -align bottom -subtype depth
 
@@ -152,28 +149,9 @@ endline
 
 point 431.1111111111111 95.11111111111111 entrance -orientation 252.7
 
-point 76.44444444444444 258.66666666666663 breakdown-choke -scale xl
-
-point 107.55555555555556 190.66666666666666 label -text "guano" -align bottom
-
-point 448.4444444444444 120.44444444444444 label -text "Long.: -78,3846 <br>Lat.: -5.6298 <br>Alt.: 1410 m"
-
-line wall
-endline
-
-point 68.44444444444444 254.2222222222222 breakdown-choke
-
-point 70.48366013071893 248.0228758169935 breakdown-choke -scale xl
-
-point 68.44444444444444 254.2222222222222 breakdown-choke -scale xl
-
-point 362.1323529411765 66.1764705882353 altitude -align bottom
+point 362.1323529411765 66.1764705882353 altitude -align bottom -value [-1410 m]
 
 point 60.05333333333333 239.79333333333332 altitude -align bottom-left
-
-point 64.88888888888889 238.66666666666666 breakdown-choke -scale xl
-
-point 61.77777777777778 247.1111111111111 breakdown-choke -scale xl
 
 endscrap
 
