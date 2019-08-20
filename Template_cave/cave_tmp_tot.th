@@ -2,7 +2,7 @@ encoding utf-8
 # Encoding of the file; Default = utf-8
 
 # Copyright (C) 2018 Xavier Robert <xavier.robert***@***ird.fr>
-# Released under a Creative Commons Attribution-ShareAlike-NonCommecial License:
+# Released under a Creative Commons Attribution-ShareAlike-NonCommercial License:
 #	<http://creativecommons.org/licenses/by-nc-sa/3.0/>
 
 #<fr> Appeller les différents fichiers de données topographiques
@@ -28,9 +28,5 @@ join scrap_p_1 scrap_p_21
 #<en> If for example the two scraps join themself at two different places,
 #     uses the -count option
 join scrap_p_1 scrap_p_21 -count 2
-
-
-#<fr> Definition des map (à rédiger)
-#<en> Map definition (to develop)
 
 

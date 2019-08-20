@@ -1,0 +1,65 @@
+encoding  utf-8
+# Encoding of the file; Default = utf-8
+
+# Copyright (C) 2019 Xavier Robert <xavier.robert***@***ird.fr>
+# Released under a Creative Commons Attribution-ShareAlike-NonCommercial License:
+#	<http://creativecommons.org/licenses/by-nc-sa/3.0/>
+
+#<en> This file is an example of how to define managed maps to choose what to export in the thconfig file.
+#	  See the thconfig file to see how to call them
+#<fr> Ce fichier est un exemple de fichier qui définit les maps qui permette de choisir 
+#     dans le fichier thconfig quelle partie de la topographie exporter.
+#     Voir le fichier thconfig pour trouver la syntaxe d'utilisation
+
+map Cave1-plan -title "Cave1 plan view"
+	#<en> Cave1-plan map definition that use plan-view's scraps that are part of the Cave1
+	#	  The option -title define the title of the map
+	#<fr> Définition de la map Cave1-plan qui utilise les scraps en plan 
+	#     qui font partie de la Cave1
+	# 	  L'option -title définit le titre de la map
+	Cave1-SP1	
+		#<en> Call the scrap called Cave1-SP1
+		#     This could be scraps, survey or other map references
+		#<fr> Appelle le scrap Cave1-SP1
+		#	  Peut être un scrap, une survey ou une référence d'une autre map
+	break
+		#<en> Next level scrap, survey or other map reference
+		#<fr> Définit le prochain niveau de scrap, survey ou autre référence de map
+	Cave1-SP1
+	break
+	Cave1-SP3
+	#break
+	#...
+endmap
+
+map Cave2-plan 3 5 cm above
+	#<en> Cave2-plan map definition that use plan-view's scraps that are part of the Cave2
+	#     The option 3 5 cm above will place the map above (could also be below or none)
+	#     the others, and move it 3 cm on the x-axis et 5 cm of the y-axis
+	#<fr> Définition de la map Cave2-plan qui utilise les scraps en plan 
+	#     qui font partie de la Cave2
+	#	  L'option 3 5 cm above place la map au dessus des autres
+	#     (peut aussi être en dessous [below] ou sans [none]), et déplace cette map de 3 cm 
+	#      vers la droite (x-axis) et 5 cm vers le haut (y-axis)
+	Cave2-SP1
+	break
+	Cave2-SP2
+	preview below Cave1-plan
+		#<en> This option forces the scrap Cave2_SP2 to be drawn under the map Cave1-plan
+		#     To force the scrap Cave2-SP2 to be drown over the map Cave1-plan,
+		#	  replace "below" by "above"
+		#     Note that the last argument should be a map
+		#<fr> Cette option force le dessin en dessous de la map Cave1-plan.
+		#     Pour forcer le dessin au-dessus de la map Cave1-plan,
+		#     remplacer "below" par "above"
+		#     Noter que le dernier argument doit être une map
+	#break
+	#...
+endmap
+
+# Build a map that show all the scraps of the cave
+map Cave-plan-tot
+	Cave1-plan
+	break
+	Cave2-plan
+endmap

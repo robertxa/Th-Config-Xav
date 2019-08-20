@@ -1,16 +1,16 @@
 Therion Config file
 ===================================================
 
-Version 2.0 B2 - Jan 19, 2019
+Version 2.0 B3 - Aug. 19, 2019
 
 Created by: / Créé par : Xavier Robert
 
 Licence
 -------  
-Released under a Creative Commons Attribution-ShareAlike-NonCommecial License:
+Released under a Creative Commons Attribution-ShareAlike-NonCommercial License:
 	<http://creativecommons.org/licenses/by-nc-sa/3.0/>
 
-Publié sous la licence Creative Commons Attribution-ShareAlike-NonCommecial:
+Publié sous la licence Creative Commons Attribution-ShareAlike-NonCommercial:
 	<http://creativecommons.org/licenses/by-nc-sa/3.0/>
 
 
@@ -25,6 +25,10 @@ In this folder, four files are present:
 3. Cave_tmp-atlas.thconfig: this is a template for a thconfig file to generate a plan-view atlas (note the upper case for the first letter; it helps a lot with completion in the terminal...)
 
 4. cave_tmp_tot.th: this is a .th file that merge data files (stored here in the folder th/) and drawing files (stored here in the folder th2/)
+
+5. cave-maps-extended.th : This file is an example of how to define managed maps to choose what to export in the thconfig file. See the thconfig file to see how to call them.
+
+6. cave-maps-plan.th : This file is an example of how to define managed maps to choose what to export in the thconfig file. See the thconfig file to see how to call them.
 
 Three folders are also present:
 
@@ -72,6 +76,10 @@ Dans ce dossier, quatre fichiers sont présents :
 3. Cave_tmp-atlas.thconfig : C'est un fichier thconfig template pour exporter le plan sous forme d'un Atlas (noter la première lettre du nom en majuscule ; cela aide grandement si utilisation de la complétion automatique avec l'utilisation du terminal...)
 
 4. cave_tmp_tot.th : C'est un template de fichier .th qui fait la synthèse de tous les fichiers de données (ici dans le dossier th/) et de dessins (ici dans le dossier th2/)
+
+5. cave-maps-extended.th : Ce fichier est un exemple de fichier qui définit les maps qui permette de choisir dans le fichier thconfig quelle partie de la topographie exporter. Voir le fichier thconfig pour trouver la syntaxe d'utilisation.
+
+6. cave-maps-plan.th : Ce fichier est un exemple de fichier qui définit les maps qui permette de choisir dans le fichier thconfig quelle partie de la topographie exporter. Voir le fichier thconfig pour trouver la syntaxe d'utilisation.
 
 Il y a aussi trois autres dossiers :
 

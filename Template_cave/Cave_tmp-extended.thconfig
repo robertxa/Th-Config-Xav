@@ -2,7 +2,7 @@ encoding  utf-8
 # Encoding of the file; Default = utf-8
  
 # Copyright (C) 2018 Xavier Robert <xavier.robert***@***ird.fr>
-# Released under a Creative Commons Attribution-ShareAlike-NonCommecial License:
+# Released under a Creative Commons Attribution-ShareAlike-NonCommercial License:
 #	<http://creativecommons.org/licenses/by-nc-sa/3.0/>
 
 # This file is a template thconfig file
@@ -30,6 +30,10 @@ encoding  utf-8
 #     You also can call all the files here with the source command, 
 #     but you will not be able to link everything there
 source cave_tmp_tot.th
+
+#<fr> Definition des maps
+#<en> Map definition
+input cave-maps-extended.th
 
 #<fr> Si vous avez un MNT, vous pouvez le rajouter
 #<en> If you have a DEM, you can add it
@@ -241,7 +245,7 @@ layout my_layout-coupe
 		\edef\nostring{}            % empty string
 		\ifx\temp\nostring          % test if cavename is empty
 			% if empty reassign cavename to describe selected maps as a group
-			\cavename={Tragadero de Bellavista \smallbreak où gouffre de Bellavista} 		
+			\cavename={Tragadero de Bellavista \smallbreak ou gouffre de Bellavista} 		
 		\else % if not empty keep the value set by therion, or assign an override cavename here
 		\fi
 	\newtoks\club \club={Mon Club}
@@ -268,6 +272,19 @@ endlayout
 #<en> xvi export
 #     Better if the xvi files are saved in the drawing folder (here th2/)
 export map -projection extended -fmt xvi -layout xviexport -o th2/cave-coupe2018.xvi
+
+#<fr> Pour choisir de n'exporter que la coupe développée de la map Cave1-extended
+#     La définition de la map choisie doit se trouver dans le fichier Cave-maps-extended.th
+#     Si on choisit cet export, les autres sélections doivent être commentée.
+#<en> To select only to export the extended elevation of the Cave1
+#     The definition of the map to export should be in the file Cave-maps-extended.th
+#     If we choose this export, the other selections should be commented
+select Cave1-extended
+#<fr> Pour choisir d'exporter la totalité de la cavité (coupe développée)
+#     Si on choisit cet export, les autres sélections doivent être commentée.
+#<en> To select to export the whole cave (extended view)
+#     If we choose this export, the other selections should be commented
+#select Cave-plan-extended
 
 #<fr> Export de la coupe développée en pdf
 #<en> Pdf extended-view export
