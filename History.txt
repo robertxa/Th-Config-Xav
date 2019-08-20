@@ -1,7 +1,15 @@
 History
 
-2019/01/19 : Separates the thconfig tempalte for plan and extended views
+2019/08/19 : Correction of the label of the point u:shell ("line" replaced by "point")
+
+2019/07/21 : New point Shell
+
+2019/01/19 : Separates the thconfig template for plan and extended views
              Add a thconfig template to generate an Atlas
+
+2019/02/03 : New area galerie
+			 New lines rail, walk and handrail
+			 Change lines wall_unsurveyed, survey_cave
 
 2019/01/12 : New areas tronc and feuilles
 

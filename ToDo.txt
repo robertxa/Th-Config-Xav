@@ -18,6 +18,5 @@ DONE
 	- Add an area tronc (2019/01/12)
 	- Add an area feuilles (2019/01/12)
 	- Add a basic layout for Atlas export (2019/01/19)
-	- Correction of the label of the point u:shell ("line" replaced by "piont") (2019/08/19)
 	-
 	
