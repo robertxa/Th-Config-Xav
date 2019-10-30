@@ -286,6 +286,7 @@ layout drawingconfig
 	symbol-color point altitude [100 50 0]
 	symbol-color point station [54 7 60]
 	symbol-color line flowstone [100 60 20]
+	symbol-color line wall:flowstone [100 60 20]
 
 	####### Metapost-changes ############
 	code metapost
