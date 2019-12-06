@@ -1,7 +1,7 @@
 Therion Config file
 ===================================================
 
-Version 2.0 B2- Jan 19, 2019
+Version 3.0 B2- Dec 19, 2019
 
 Created by: / Créé par : Xavier Robert
 
@@ -70,6 +70,14 @@ New points are:
 6. artificial anchor (u:anchor_artificial)
 
 7. natural anchor (u:anchor_natural)
+
+8. shell (u:shell) 
+
+9. masonry (u:masonry)
+
+10. Ex voto/Signature (u:ex_voto)
+
+11. Human bones (u:human_bones)
 
 New lines are:
 
@@ -175,6 +183,15 @@ Les nouveaux points sont :
 6. ancrage artificiel (u:anchor_artificial)
 
 7. ancrage naturel (u:anchor_natural)
+
+8. coquille fossile (u:shell) 
+
+9. maçonnerie (u:masonry)
+
+10. Ex voto/Signature (u:ex_voto)
+
+11. ossements humains (u:human_bones)
+
 
 Les nouvelles lignes sont :
 

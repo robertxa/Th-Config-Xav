@@ -8,7 +8,6 @@ TO DO
 	- Upgrade the layout for the a great/better atlas definition !
 	- Add a depth point definition (based on the altitude point ?) ! I need help for that... (See TEST_THERION/ folder)
 	- Add the possibility to modify the header to write the cave's depth as +xx m / -yy m and not the total depth. I need help for that !  (See TEST_THERION/ folder)
-	- Modify the templates to explain how to add GPS coordinates in the header
 	- 
 
 DONE
@@ -19,4 +18,9 @@ DONE
 	- Add a basic layout for Atlas export (2019/01/19)
 	- Add an example of a file maps.th that define and manage maps and its link to the thconfig. (2019/08/20)
 	- Add a way to add GPS coordinates of the entrances in the header (2019-11-27)
-	- 	
+	- Modify the templates to explain how to add GPS coordinates in the header (2019-12-06)
+	- Add a masonry point (2019/01/09)
+	- Add an ex voto/signature point (2019/01/09)
+	- Add a human bones point (2019/01/09)
+	- update the danger point (2019/01/09)
+	- 

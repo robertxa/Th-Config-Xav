@@ -1,5 +1,8 @@
 History
 
+2019/12/06 : Add new points (ex voto/signature, human bones, masonry)
+			 Add a way to force entrances coordinates into the header
+
 2019/08/19 : Correction of the label of the point u:shell ("line" replaced by "point")
 
 2019/07/21 : New point Shell
