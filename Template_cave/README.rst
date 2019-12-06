@@ -13,6 +13,7 @@ Released under a Creative Commons Attribution-ShareAlike-NonCommercial License:
 Publié sous la licence Creative Commons Attribution-ShareAlike-NonCommercial:
 	<http://creativecommons.org/licenses/by-nc-sa/3.0/>
 
+Le readme en langue française est à la suite de celui en langue anglaise !
 
 Templates for .thconfig and .th files (en)
 ------------------------------------------

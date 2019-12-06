@@ -13,6 +13,8 @@ Released under a Creative Commons Attribution-ShareAlike-NonCommecial License:
 Publié sous la licence Creative Commons Attribution-ShareAlike-NonCommecial:
 	<http://creativecommons.org/licenses/by-nc-sa/3.0/>
 
+Le readme en langue française est à la suite de celui en langue anglaise !
+
 Usage (en)
 ----------
 
@@ -125,6 +127,14 @@ If you have hints, do not hesitate to contact me.
 
 Have fun...
 
+Some example of use (en)
+------------------------
+
+You will find some real example based on these files in:
+
+1. Folly's karst area database (France) <https://github.com/robertxa/Topographies-Samoens_Folly>
+
+2. Peruvian caves surveys database <https://github.com/robertxa/Mapas_Cavernas_Peru>
 
 Utilisation (fr)
 ----------------
@@ -240,4 +250,11 @@ Si vous avez des idées ou des solutions pour aider à ce développement, n'hés
 
 Bon courage...
 
+Quelques exemples d'utilisation (fr)
+------------------------------------
 
+Vous trouverez des exemples réels basés sur ces fichiers et structure :
+
+1. La base de données topographiques des cavités du massif du Folly (France) <https://github.com/robertxa/Topographies-Samoens_Folly>
+
+2. La base de données topographiques des cavités du Pérou <https://github.com/robertxa/Mapas_Cavernas_Peru>
