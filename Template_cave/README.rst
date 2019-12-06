@@ -30,13 +30,15 @@ In this folder, four files are present:
 
 6. cave-maps-plan.th : This file is an example of how to define managed maps to choose what to export in the thconfig file. See the thconfig file to see how to call them.
 
-Three folders are also present:
+Four folders are also present:
 
 1. DEM/: folder where DEM are stored
 
 2. th/: folder where data files (.th) are stored
 
 3. th2/: folder where drawing files (.th2 and .xvi) are stored
+
+4. legendes/: folder where additionnal set up for the header as the entrances GPS coordinates are stored
 
 For all the template files, the functions are described both in French (<fr>) and English (<en>).
 
@@ -81,13 +83,15 @@ Dans ce dossier, quatre fichiers sont présents :
 
 6. cave-maps-plan.th : Ce fichier est un exemple de fichier qui définit les maps qui permette de choisir dans le fichier thconfig quelle partie de la topographie exporter. Voir le fichier thconfig pour trouver la syntaxe d'utilisation.
 
-Il y a aussi trois autres dossiers :
+Il y a aussi quatre autres dossiers :
 
 1. DEM/ : dossier où est le MNT (Modèle Numérique de Terrain)
 
 2. th/ : dossier contenant les fichiers de données topographiques (.th)
 
 3. th2/ : dossier où sont les fichiers de dessins (.th2 et .xvi)
+
+4. legendes/: dossier où sont rajoutés des définitions additionnelles pour le header, comme les coordonnées GPS des entrées
 
 Pour chaque fichier template, les fonctions et les mots-clefs sont décrits à la fois en français (<fr>) et en anglais (<en>).
 

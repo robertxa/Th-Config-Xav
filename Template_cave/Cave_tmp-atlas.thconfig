@@ -39,7 +39,12 @@ source DEM/DEM.th
 #     Ce fichier doit contenir des définitions (layout) qui seront appelées dans les layouts de ce thconfig
 #<en> Add config file (path + name).
 #     Should contain layouts definitions that will be called in the layout of this thconfig
-input ../../../config.thc 
+input ../../../config.thc
+
+#<fr> Utiliser un fichier pour la définition des coordonnées GPS Lat - Long / WGS84 des entrées.
+#<en> Add file to define GPS entrances coordinates (Lat - Long / WGS84).
+input legendes/entrances_coordinates.th
+
 #_________________________________________________________________________________________#
 
 
@@ -64,6 +69,8 @@ layout my_layout_Atlas
 	                           #     otherwise the North Arrow size does not fit well
 	copy drawingconfig
 	copy AtlasSetUp
+	copy Coords_Header_Cave	#<fr> Pour rajouter les coordonnées des entrées
+							#<en> To add entrances coordinates
 	copy headeratlas 
 	copy langue-fr
 

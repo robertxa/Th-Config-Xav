@@ -1,0 +1,84 @@
+encoding  utf-8
+
+# Licence
+#
+#<en> Released under a Creative Commons Attribution-ShareAlike-NonCommercial License:
+#<fr> Publié sous la licence Creative Commons Attribution-ShareAlike-NonCommercial:
+#     <http://creativecommons.org/licenses/by-nc-sa/3.0/>
+#
+# Written by: / Ecrit par : Xavier Robert
+#
+#<en> File to set up the entrance GPS coordinates (Lat - Long / WGS84)
+#     In your *.thconfig file, you need to call this file with:
+#<fr> Fichier pour définir les coordonnées GPS (Lat - Long / WGS84) des entrées
+#     Dans votre fichier *.thconfig, vous devez appeller ce fichier avec la ligne :
+#         input <path/to/the/file/>entrances_coordinates.thc
+#<en> and then, in each layout, you need to call the corresponding layout:
+#<fr> et ensuite, dans chaque layout de votre thconfig, vous devez appeler les layouts qui vous intéressent comme par exemple :
+#         copy Coords_Header_Cave
+
+layout Entrances_coords_Cave
+#<en> Layout where we define the different variables that contain the text with 
+# 	  the entrance coordinates we want to print in the header.
+# 	  We need one variable per entrance.
+#	  This layout is called by the layout Coords_Header below.
+#<fr> Layout qui défini les différentes variables qui contiennent le texte avec
+#	  les coordonnées des entrées que nous voulons écrire dans le header
+#	  Ce layout doit être appelé par le layout ci-dessous Coords_Header_Cave.
+
+
+
+	code tex-map
+		\def\thlocationCavea{Cave 1    --  Lat. : 46.10222 N ; Long. : 6.77962 E ; Alt. : 1836 m}
+		\def\thlocationCaveb{Cave 1b --  Lat. : 46.102383 N ; Long. : 6.780567 E ; Alt. : 1843 m}
+		\def\thlocationCavec{Cave 2 --  Lat. : 46.102571 N ; Long. : 6.780500 E ; Alt. = 1854 m}
+		\def\thlocationCaved{Cave 2b    --  Lat. : 46.10212 N ; Long. : 6.78202 E ; Alt. : 1873 m}
+		%...
+	endcode 
+	
+endlayout
+
+
+layout Coords_Header_Cave
+#<en> Layout that set the presentation for the entrance coordinates.
+#>fr> Layout qui gère la mise en page pour les coordonnées des entrées
+	
+	copy Entrances_coords_Cave
+	#<en> It calls the layout above Entrances_coords_Cave where we defined the different 
+	#	  variables that contain the text with 
+	#	  the entrance coordinates we want to print in the header.
+	#<fr> Appel du layout ci-dessus Entrances_coords_Cave qui défini les différentes
+	#	  variables qui contiennent le texte avec les coordonnées à écrire dans le header
+	
+	code tex-map
+		\def\nostring{}
+		\def\thsizexl{}
+		\def\thsizel{}
+		\def\thsizem{}
+		\ifx\thsizexl\nostring\def\thsizexl{30}\else\fi
+		\ifx\thsizel\nostring\def\thsizel{24}\else\fi
+		\ifx\thsizem\nostring\def\thsizem{12}\else\fi
+		
+		\ECoordinates={
+			\edef\tmp{\thlocationCavea} \ifx\tmp\empty \else
+				{\size[\thsizem] \ss\thlocationCavea\vss}	%<en> The first one should be without hskip
+															%<fr> La première coordonnée doit être sans le hskip
+			\fi
+			\edef\tmp{\thlocationCaveb} \ifx\tmp\empty \else
+				{\size[\thsizem]\hskip5.95cm \ss\thlocationCaveb\vss}
+															%<en> You need to set your hskip
+															%<fr> Vous devez définir ensuite le hskip
+			\fi
+			\edef\tmp{\thlocationCavec} \ifx\tmp\empty \else
+				{\size[\thsizem]\hskip5.95cm \ss\thlocationCavec\vss}
+			\fi
+			\edef\tmp{\thlocationCaved} \ifx\tmp\empty \else
+				{\size[\thsizem]\hskip5.95cm \ss\thlocationCaved\vss}
+			%...
+		}
+	endcode
+
+endlayout
+
+
+
