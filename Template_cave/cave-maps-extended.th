@@ -3,7 +3,7 @@ encoding  utf-8
 
 # Copyright (C) 2019 Xavier Robert <xavier.robert***@***ird.fr>
 # Released under a Creative Commons Attribution-ShareAlike-NonCommercial License:
-#	<http://creativecommons.org/licenses/by-nc-sa/3.0/>
+#	<http://creativecommons.org/licenses/by-nc-sa/4.0/>
 
 #<en> This file is an example of how to define managed maps to choose what to export in the thconfig file.
 #	  See the thconfig file to see how to call them

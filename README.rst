@@ -8,10 +8,10 @@ Created by: / Créé par : Xavier Robert
 Licence
 -------  
 Released under a Creative Commons Attribution-ShareAlike-NonCommecial License:
-	<http://creativecommons.org/licenses/by-nc-sa/3.0/>
+	<http://creativecommons.org/licenses/by-nc-sa/4.0/>
 
 Publié sous la licence Creative Commons Attribution-ShareAlike-NonCommecial:
-	<http://creativecommons.org/licenses/by-nc-sa/3.0/>
+	<http://creativecommons.org/licenses/by-nc-sa/4.0/>
 
 Le readme en langue française est à la suite de celui en langue anglaise !
 
