@@ -1,5 +1,7 @@
 History
 
+2020/02/05 : Remove point Danger (it caused problems with sand and continuations features)
+
 2019/12/06 : Add new points (ex voto/signature, human bones, masonry)
 			 Add a way to force entrances coordinates into the header
 
