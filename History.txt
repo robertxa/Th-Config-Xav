@@ -1,5 +1,8 @@
 History
 
+2020/04/26 : Add unit to the wall point wallaltitude
+			 Add color to the wall point wallaltitude
+			 
 2020/02/05 : Remove point Danger (it caused problems with sand and continuations features)
 
 2019/12/06 : Add new points (ex voto/signature, human bones, masonry)

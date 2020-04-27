@@ -259,6 +259,7 @@ layout my_layout-coupe
 	\newtoks\synth \synth={Xavier Robert}
 	\newtoks\wpage \wpage={http://mapageweb}
 	\newtoks\expe \expe={Mon expe 2018}
+	\newtoks\guide \guide={Mon guide 2018}
 	endcode  
   
 endlayout

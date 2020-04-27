@@ -1,7 +1,7 @@
 Therion Config file
 ===================================================
 
-Version 3.0 B2- Dec 19, 2019
+Version 3.1 - Apr. 27, 2020
 
 Created by: / Créé par : Xavier Robert
 
@@ -42,7 +42,7 @@ In the config.thc, there are different parts and layouts:
 
 4. layout headerl: Redefine the header for the plan view
 
-5. layout header_coupe:  Redefine the header for the extended view
+5. layout header_coupe: Redefine the header for the extended view, with horizontal scale bar
 
 6. layout layoutmapborder: to add a border to the pdf exports
 
@@ -52,7 +52,15 @@ In the config.thc, there are different parts and layouts:
 
 9. layout northarrowMG: New north arrow definition
 
-10. layout test: to test new configurations if needed!
+10. layout scalebar_horiz: horizontal scale bar definition
+
+11. layout scalebar_vert: vertical scale bar definition
+
+12. header_coupe_vert-auto: Redefine the header for the extended view, with vertical scale bar situated to the right of the header
+
+13. header_coupe_vert-to-place: Redefine the header for the extended view, with vertical scale bar that needs to be placed within the layout in the thconfig file
+
+14. layout test: to test new configurations if needed!
 
 New symbols definitions (en)
 ----------------------------
@@ -159,21 +167,29 @@ Dans le config.thc, il y a différentes parties et layouts :
 
 2. layout langue-XX avec XX = fr, es où en : Layout pour changer la langue du cartouche (header) et de la légende. Cela définit aussi le mot-clef Therion ``language XX``
 
-3. Layout drawconfig : layout qui permet de définir la couleur, la taille de symboles, ainsi que de nouveaux symboles...
+3. Layout drawconfig : Layout qui permet de définir la couleur, la taille de symboles, ainsi que de nouveaux symboles...
 
 4. layout headerl : Redéfinit le cartouche (header) pour la projection en plan
 
 5. layout header_coupe :  Redéefinit le cartouche (header) pour la coupe développée
 
-6. layout layoutmapborder : pour ajouter un cadre de bordure aux exports pdf
+6. layout layoutmapborder : Pour ajouter un cadre de bordure aux exports pdf
 
-7. layout layouAtlasNorthArrow : redéfinition de la flèche du nord pour l'Atlas
+7. layout layouAtlasNorthArrow : Redéfinition de la flèche du nord pour l'Atlas
 
-8. Layout layoutcontinuation : pour écrire tous les textes qui sont donnés dans les points de continuations (i.e. avec l'option -attr Code XX -text "C'est ce texte là qui est écrit"
+8. Layout layoutcontinuation : Pour écrire tous les textes qui sont donnés dans les points de continuations (i.e. avec l'option -attr Code XX -text "C'est ce texte là qui est écrit"
 
 9. layout northarrowMG : Nouvelle définition de la flèche du nord
 
-10. layout test : pour tester de nouvelles configurations si besoin !
+10. layout scalebar_horiz: Nouvelle définition d'une barre d'échelle horizontale
+
+11. layout scalebar_vert: Nouvelle définition d'une barre d'échelle verticale
+
+12. header_coupe_vert-auto: Redéfinition du header pour les coupes, avec une échelle verticale situé sur la droite du header
+
+13. header_coupe_vert-to-place: Redéfinition du header pour les coupes, avec une échelle verticale à placer par l'utilisateur dans le layout du fichier thconfig
+
+14. layout test : pour tester de nouvelles configurations si besoin !
 
 Nouvelles définitions de symboles (fr)
 --------------------------------------
