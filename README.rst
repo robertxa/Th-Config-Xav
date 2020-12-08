@@ -13,6 +13,8 @@ Released under a Creative Commons Attribution-ShareAlike-NonCommecial License:
 Publié sous la licence Creative Commons Attribution-ShareAlike-NonCommecial:
 	<http://creativecommons.org/licenses/by-nc-sa/4.0/>
 
+Langue (fr)
+-----------
 Le readme en langue française est à la suite de celui en langue anglaise !
 
 Usage (en)
@@ -108,6 +110,10 @@ New lines are:
 8. plan walk (u:planwalk)
 
 9. handrail/rambarde (u:handrail)
+
+10. Dive line/Fil d'Ariane (u:ariane)
+
+11. Deviation/Déviation (u:deviation)
 
 New areas are:
 
@@ -238,6 +244,10 @@ Les nouvelles lignes sont :
 8. chemin construit (u:planwalk)
 
 9. rambarde (u:handrail)
+
+10. Dive line/Fil d'Ariane (u:ariane)
+
+11. Deviation/Déviation (u:deviation)
 
 Les nouvelles aires sont :
 

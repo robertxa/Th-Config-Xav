@@ -1,7 +1,10 @@
 History
 
+2020/12/08 : Add some color definitions (lines and points)
+			 Add new lines (Dive line/Ariane, deviation)
+
 2020/04/26 : Add unit to the wall point wallaltitude
-			 Add color to the wall point wallaltitude
+			 Add color to the wall point wallaltitude; Be carefull, sometimes, it causes mpost errors.
 			 
 2020/02/05 : Remove point Danger (it caused problems with sand and continuations features)
 
