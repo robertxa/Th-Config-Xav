@@ -58,11 +58,13 @@ In the config.thc, there are different parts and layouts:
 
 11. layout scalebar_vert: vertical scale bar definition
 
-12. header_coupe_vert-auto: Redefine the header for the extended view, with vertical scale bar situated to the right of the header
+12. layout scalebar_vert-halama: other vertical scale bar definition
 
-13. header_coupe_vert-to-place: Redefine the header for the extended view, with vertical scale bar that needs to be placed within the layout in the thconfig file
+13. header_coupe_vert-auto: Redefine the header for the extended view, with vertical scale bar situated to the right of the header
 
-14. layout test: to test new configurations if needed!
+14. header_coupe_vert-to-place: Redefine the header for the extended view, with vertical scale bar that needs to be placed within the layout in the thconfig file
+
+15. layout test: to test new configurations if needed!
 
 New symbols definitions (en)
 ----------------------------
@@ -191,11 +193,13 @@ Dans le config.thc, il y a différentes parties et layouts :
 
 11. layout scalebar_vert: Nouvelle définition d'une barre d'échelle verticale
 
-12. header_coupe_vert-auto: Redéfinition du header pour les coupes, avec une échelle verticale situé sur la droite du header
+12. layout scalebar_vert-halama: Nouvelle définition d'une autre barre d'échelle verticale
 
-13. header_coupe_vert-to-place: Redéfinition du header pour les coupes, avec une échelle verticale à placer par l'utilisateur dans le layout du fichier thconfig
+13. header_coupe_vert-auto: Redéfinition du header pour les coupes, avec une échelle verticale situé sur la droite du header
 
-14. layout test : pour tester de nouvelles configurations si besoin !
+14. header_coupe_vert-to-place: Redéfinition du header pour les coupes, avec une échelle verticale à placer par l'utilisateur dans le layout du fichier thconfig
+
+15. layout test : pour tester de nouvelles configurations si besoin !
 
 Nouvelles définitions de symboles (fr)
 --------------------------------------
@@ -223,7 +227,6 @@ Les nouveaux points sont :
 10. Ex voto/Signature (u:ex_voto)
 
 11. ossements humains (u:human_bones)
-
 
 Les nouvelles lignes sont :
 

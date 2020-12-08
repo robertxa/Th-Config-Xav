@@ -2,6 +2,7 @@ History
 
 2020/12/08 : Add some color definitions (lines and points)
 			 Add new lines (Dive line/Ariane, deviation)
+			 Add vertical scalebar layout
 
 2020/04/26 : Add unit to the wall point wallaltitude
 			 Add color to the wall point wallaltitude; Be carefull, sometimes, it causes mpost errors.
