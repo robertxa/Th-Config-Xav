@@ -268,7 +268,15 @@ layout my_layout
 endlayout
 #<fr> Fin de la définition du layout pour l'export de la projection en plan
 #<en> End of the plan-view layout definition
-  
+
+#<fr> Layout pour afficher les commentaires des continuations
+#<en> Layout to print the continuations' commentaries
+layout my_layout-Continuations
+	copy my_layout
+	copy layoutcontinuation	# Pour afficher le label des continuations
+endlayout
+#<fr> Fin de la définition du layouts des commentaires des continuations
+#<en> End of the continuations' commentaries layout definition  
  
 #_________________________________________________________________________________________#  
 # 3-EXPORTS
@@ -298,6 +306,10 @@ select Cave1-plan
 #<fr> Export du plan en pdf
 #<en> Pdf plan-view export
 export map -o Outputs/2D/cave-plan2018.pdf -layout my_layout
+#<fr> Export dplan en pdf avec les commentaires des continuations
+#<en> Pdf plan-view export with continuations' commentaries
+export map -o Outputs/CP62-plan-Continuations.pdf -layout my_layout-Continuations
+
 
 #<fr> Export du modèle en 3D (.lox pour visualistion dans Loch)
 #<en> Lox 3D-model export (.lox for visualisation with Loch)
@@ -317,5 +329,3 @@ export model -fmt kml -o cave_2018m.kml
 #<fr> Export de la topographie (parois) en kml pour Google Earth
 #<en> Kml export of the walls-map (for Google Earth)
 export map -proj plan -fmt kml -o cave_2018.kml -layout my_layout
-
-

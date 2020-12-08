@@ -86,10 +86,21 @@ layout my_layout-coupe
 	#     Edit the config.thc file to know the existing configurations
 	#     and to modify then or add new ones
 	copy drawingconfig
-	copy Coords_Header_Cave	#<fr> Pour rajouter les coordonnées des entrées
-							#<en> To add entrances coordinates
-	copy header_coupe
-	copy langue-es
+	copy Coords_Header_Cave				#<fr> Pour rajouter les coordonnées des entrées
+										#<en> To add entrances coordinates
+	copy header_coupe					#<fr> Pour afficher le header classique (échelle horizontale)
+										#<en> To print the classic header with horizontal scalebar
+	#copy header_coupe_vert-auto		#<fr> Pour afficher le header avec échelle verticale
+										#     Voir le thconfig.thc
+										#<en> To print the header with vertical scalebar
+										#	  See thconfig.thc file
+	#copy header_coupe_vert-to-place	#<fr> Pour afficher le header avec échelle verticale
+										#     Penser à décommenter le bloc correspondant dans le code tex-map/endcode
+										#	  Voir le thconfig.thc
+										#<en> To print the header with vertical scalebar
+										#	  Please, uncomment the corresponding block in the code tex-map/endcode block
+										#	  See thconfig.thc file
+	copy langue-fr
 	
 	#<fr> Titre du document pdf 
 	#<en> Title of the pdf file 
@@ -216,19 +227,33 @@ layout my_layout-coupe
 	#<fr> Print stations/names of the topographic stations (station-names), scraps (sraps-name)...
 	#debug station-names
   
+	#<fr> Si nous voulons une grille en pointillés tous les 10 m de dénivellé
+	#<en> If we want to plot a vertical dashed grid every 10 m
 	#<fr> Specifier qu'il faut imprimer une grille au dessous de la topo  
 	#<en> Print a grid under the map 
-	#grid bottom
-  
-	#<fr> Specifier le pas de la grille, ici 100x100x100 m
-	#     (Trois dimensions, oui, ça sert pour la coupe aussi) 
-	#<en> Specify the grid dimensions (here 100x100x100 m) 
-	#grid-size 100 100 100 m
-	
+	grid bottom
+	#<fr> Specifier le pas de la grille, ici 100x100x10 m
+	#	  (Trois dimensions, oui, ça sert pour la coupe aussi) 
+	#<en> Specify the grid spacing, here 100x100x10 m
+	#	  (3-D; it is also useful for extended elevations) 
+	grid-size 100 100 10 m
+	#<fr> Spécifier le système de projection
+	#	  Utile pour caler les altitudes
+	#<en> Specify the projection system
+	#	  Useful to calibrate the altitude's origin
+	cs UTM32N
+	#<fr> Spécifier les coordonnées d'origine de la grille
+	#	  Utile pour caler les altitudes
+	#<en> Specify the grid's origin
+	#	  Useful to calibrate the altitude's origin
+	grid-origin 0 0 0 m
+	#grid-origin 0 0 1960 m
+	#<fr> Indiquer les altitudes correspondant à la gille
+	#<en> Print the altitudes of the grid
+	grid-coords border
 	#<fr> Si nous ne voulons pas de grille
 	#<en> If we do not want any grid
-	grid off
-
+	#grid off
 
 	######## Code Metapost pour modifier l aspect des symboles #######
 	############ MetaPost code to modify symbols aspects ############# 
@@ -260,11 +285,34 @@ layout my_layout-coupe
 	\newtoks\wpage \wpage={http://mapageweb}
 	\newtoks\expe \expe={Mon expe 2018}
 	\newtoks\guide \guide={Mon guide 2018}
+
+	%<fr> Dans le cas d'un cartouche avec une barre verticale à placer
+	%     Décommenter les lignes suivantes
+	%<fr> If we want to plot a vertical scalebar
+	%     Uncomment the following lines
+		%\def\maplayout{
+		%	%<fr> Ajout du cartouche
+		%	%<en> Add header
+		%	\legendbox{0}{-1}{NW}{\the\legendcontent}
+		%	%<fr> Ajout de la barre d'échelle verticale
+		%	%<en> Add vertical scalebar
+		%	\legendbox{0}{87.5}{NW}{\hsize=1.5 cm\centerline\scalebar}
+		%	}
 	endcode  
   
 endlayout
 #<fr> Fin de la définition du layout pour l'export de la projection en coupe développée
 #<en> End of the extended-view layout definition
+
+#<fr> Layout pour afficher les commentaires des continuations
+#<en> Layout to print the continuations' commentaries
+layout my_layout-coupe-Continuations
+	copy my_layout-coupe
+	copy layoutcontinuation	# Pour afficher le label des continuations
+endlayout
+#<fr> Fin de la définition du layouts des commentaires des continuations
+#<en> End of the continuations' commentaries layout definition
+
 #_________________________________________________________________________________________#
 
  
@@ -297,6 +345,10 @@ select Cave1-extended
 #<fr> Export de la coupe développée en pdf
 #<en> Pdf extended-view export
 export map -projection extended -layout my_layout-coupe -o cave-coupe2018.pdf
+#<fr> Export de la coupe développée en pdf avec les commentaires des continuations
+#<en> Pdf extended-view export with continuations' commentaries
+export map -projection extended -layout my_layout-coupe-Continuations -o cave-coupe-Continuations2020.pdf
+
 
 #<fr> Export du modèle en 3D (.lox pour visualistion dans Loch)
 #<en> Lox 3D-model export (.lox for visualisation with Loch)
