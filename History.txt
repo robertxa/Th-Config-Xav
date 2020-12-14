@@ -1,5 +1,8 @@
 History
 
+2020/12/14 : Add caver walking/climbing points
+			 Add plan/extended symbols
+
 2020/12/08 : Add some color definitions (lines and points)
 			 Add new lines (Dive line/Ariane, deviation)
 			 Add vertical scalebar layout

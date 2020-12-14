@@ -7,10 +7,10 @@ Created by: / Créé par : Xavier Robert
 
 Licence
 -------  
-Released under a Creative Commons Attribution-ShareAlike-NonCommecial License:
+Released under a Creative Commons Attribution-ShareAlike-NonCommecial License (except indications in thconfig.thc):
 	<http://creativecommons.org/licenses/by-nc-sa/4.0/>
 
-Publié sous la licence Creative Commons Attribution-ShareAlike-NonCommecial:
+Publié sous la licence Creative Commons Attribution-ShareAlike-NonCommecial (sauf indications dans le config.thc):
 	<http://creativecommons.org/licenses/by-nc-sa/4.0/>
 
 Langue (fr)
@@ -92,6 +92,14 @@ New points are:
 10. Ex voto/Signature (u:ex_voto)
 
 11. Human bones (u:human_bones)
+
+12. Walking caver (u:man_w)
+
+13. Climbing caver (u:man_c)
+
+14. Plan view symbol (u:symbol_plan)
+
+15. Extended view symbol (u:symbol_extended)
 
 New lines are:
 
@@ -227,6 +235,14 @@ Les nouveaux points sont :
 10. Ex voto/Signature (u:ex_voto)
 
 11. ossements humains (u:human_bones)
+
+12. Spéléo marchant (u:man_w)
+
+13. Spéléo grimpant (u:man_c)
+
+14. Symbole de vue en plan (u:symbol_plan)
+
+15. Symbole de vue en coupe développée (u:symbol_extended)
 
 Les nouvelles lignes sont :
 
