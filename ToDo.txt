@@ -8,9 +8,10 @@ TO DO
 	- Upgrade the layout for the a great/better atlas definition !
 	- Add a depth point definition (based on the altitude point ?) ! I need help for that... (See TEST_THERION/ folder)
 	- Add the possibility to modify the header to write the cave's depth as +xx m / -yy m and not the total depth. I need help for that !  (See TEST_THERION/ folder)
-	- Correct the scaling of the point u:man_w/c to be use with all the 
 	- draw a diver man point as the u:man_w/c --> u:man_d !
+	- draw a crawling caver (u:man_crolling or just u:man_w with rotation of 90°?)
 	- Add text to the plan/extended view symbol?
+	-
 
 DONE
 	- Add a layout for the a great atlas definition ! (2019/01/09)
