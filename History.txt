@@ -1,5 +1,7 @@
 History
 
+2021/04/28 : Update definition of transparency for area u:galerie as request by recent Therion updates;
+
 2020/12/14 : Add caver walking/climbing points
 			 Add plan/extended symbols
 

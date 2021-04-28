@@ -1,6 +1,7 @@
 TO DO
+	- Vérifier définition de la transparence pour la future update de Therion 5.6 / Verify color transparency definition for Therion 5.6 when release
 	- Rajouter un point arbre:pin ; add a point tree:pinus
-	- Rajouter un point arbre:feuillu ; add a point tree:???
+	- Rajouter un point arbre:feuillu ; add a point tree:leafy
 	- ajouter un point oiseau/guacharos ; add a point bird/guacharos
 	- ajouter ligne tronc ; add a point tree_trunc
 	- ajouter point stalactites/mites brisées ; add a point broken stalactites/mites
